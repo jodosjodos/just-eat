@@ -33,6 +33,7 @@ const OrderStatusPage = () => {
   return (
     <SafeAreaView className="bg-white">
       <ScrollView className="h-full w-full">
+        
         <Text>{status}</Text>
         <Text>OrderStatusPage</Text>
       </ScrollView>
