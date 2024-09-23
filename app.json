@@ -4,11 +4,11 @@
     "slug": "restaurant",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/food.png",
+    "icon": "./assets/images/logo.png",
     "scheme": "restaurant",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/images/logoX.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,14 +17,14 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/food.png",
+        "foregroundImage": "./assets/images/logoX.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/food.png"
+      "favicon": "./assets/images/logoX.png"
     },
     "plugins": [
       "expo-router"
