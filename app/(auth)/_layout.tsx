@@ -11,6 +11,12 @@ const Layout = () => {
           headerShown: false,
         }}
       />
+     <Stack.Screen
+        name="sign-in"
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack>
   );
 };
