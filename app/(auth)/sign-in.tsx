@@ -6,10 +6,11 @@ import Entypo from "@expo/vector-icons/Entypo";
 import { images } from "@/constants";
 import { styles } from "@/constants/styles";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import { router } from "expo-router";
 const SignIn = () => {
   return (
     <SafeAreaView className="bg-white ">
-      <View className="flex flex-col px-5  h-full  justify-between">
+      <View className="flex flex-col px-5  h-full">
         <View className="flex flex-col gap-y-9">
           <View className="flex flex-row items-center gap-9">
             <Image source={images.logo} className="self-start" />
@@ -44,15 +45,24 @@ const SignIn = () => {
                 style={styles.shadowCustom}
               />
             </View>
+            <Text className="text-primary font-lekton text-xl underline">
+              Forgot Password
+            </Text>
           </View>
         </View>
 
         <View className="self-start flex flex-row  w-full items-center justify-center gap-x-5  p-12">
           <TouchableOpacity className=" bg-secondary  rounded-full items-center  py-5 px-8 flex flex-row gap-x-3">
-            <FontAwesome name="user" size={15} color="#" />
+            <FontAwesome name="user" size={19} color="#" />
             <Text className="text-primary font-adamina text-2xl ">LogIn</Text>
           </TouchableOpacity>
         </View>
+        <Text className="font-kadwa text-3xl mt-1 p-3 heigh ">
+        new user for Just EAT
+        </Text>
+        <TouchableOpacity className="bg-primary  rounded-full items-center  py-5 px-8" onPress={()=>router.push("/sign-up")} >
+            <Text className="text-white font-adamina text-2xl ">SignUp</Text>
+          </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
