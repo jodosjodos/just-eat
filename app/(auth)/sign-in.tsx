@@ -2,7 +2,6 @@ import { View, Text, TouchableOpacity, Image, TextInput } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import Entypo from "@expo/vector-icons/Entypo";
 import { images } from "@/constants";
 import { styles } from "@/constants/styles";
 import AntDesign from "@expo/vector-icons/AntDesign";
@@ -61,7 +60,7 @@ const SignIn = () => {
         new user for Just EAT
         </Text>
         <TouchableOpacity className="bg-primary  rounded-full items-center  py-5 px-8" onPress={()=>router.push("/sign-up")} >
-            <Text className="text-white font-adamina text-2xl ">SignUp</Text>
+            <Text className="text-white font-adamina text-2xl ">SignUp Now</Text>
           </TouchableOpacity>
       </View>
     </SafeAreaView>
