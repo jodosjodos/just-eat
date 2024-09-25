@@ -1,3 +1,5 @@
 import logo from "../assets/images/logo.png";
 import logoX from "../assets/images/logoX.png";
-export { logo, logoX };
+import facebook from "../assets/images/facebook.png";
+import google from "../assets/images/google.png";
+export { logo, logoX,facebook,google };

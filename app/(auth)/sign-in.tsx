@@ -13,7 +13,7 @@ const SignIn = () => {
         <View className="flex flex-col gap-y-9">
           <View className="flex flex-row items-center gap-9">
             <Image source={images.logo} className="self-start" />
-            <Text className="font-korean-medium text-text-primary text-3xl">
+            <Text className="font-korean-medium text-primary text-3xl">
               Just EAT
             </Text>
           </View>
@@ -56,7 +56,7 @@ const SignIn = () => {
             <Text className="text-primary font-adamina text-2xl ">LogIn</Text>
           </TouchableOpacity>
         </View>
-        <Text className="font-kadwa text-3xl mt-1 p-3 heigh ">
+        <Text className="font-kadwa text-3xl mt-1 p-3  ">
         new user for Just EAT
         </Text>
         <TouchableOpacity className="bg-primary  rounded-full items-center  py-5 px-8" onPress={()=>router.push("/sign-up")} >

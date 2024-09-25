@@ -13,7 +13,7 @@ const SignUp = () => {
         <View className="flex flex-col gap-y-9">
           <View className="flex flex-row items-center gap-9">
             <Image source={images.logo} className="self-start" />
-            <Text className="font-korean-medium text-text-primary text-3xl">
+            <Text className="font-korean-medium text-primary text-3xl">
               Just EAT
             </Text>
           </View>
@@ -33,7 +33,7 @@ const SignUp = () => {
             </View>
             <View className="flex flex-row items-center">
               <FontAwesome
-                name="envelope"
+                name="user"
                 size={23}
                 color="#222"
                 style={{ position: "absolute", zIndex: 9, left: 9 }}
@@ -70,27 +70,41 @@ const SignUp = () => {
                 style={styles.shadowCustom}
               />
             </View>
-            <Text className="text-primary font-lekton text-xl underline">
-              Forgot Password
-            </Text>
           </View>
         </View>
 
-        <View className="self-start flex flex-row  w-full items-center justify-center gap-x-5  p-12">
-          <TouchableOpacity className=" bg-secondary  rounded-full items-center  py-5 px-8 flex flex-row gap-x-3">
-            <FontAwesome name="user" size={19} color="#" />
-            <Text className="text-primary font-adamina text-2xl ">LogIn</Text>
+        <View className="  px-12 py-5">
+          <TouchableOpacity
+            className="bg-primary  rounded-full items-center  py-5 px-8"
+            onPress={() => router.push("/sign-up")}
+          >
+            <Text className="text-white font-adamina text-2xl ">
+              SignUp Now
+            </Text>
           </TouchableOpacity>
         </View>
-        <Text className="font-kadwa text-3xl mt-1 p-3 heigh ">
-          new user for Just EAT
+        <Text className="font-kadwa text-2xl  p-3  text-center ">
+          already have account
         </Text>
-        <TouchableOpacity
-          className="bg-primary  rounded-full items-center  py-5 px-8"
-          onPress={() => router.push("/sign-up")}
-        >
-          <Text className="text-white font-adamina text-2xl ">SignUp Now</Text>
-        </TouchableOpacity>
+        <View className="   px-12 ">
+          <TouchableOpacity
+            className=" bg-secondary  rounded-full items-center  justify-center py-5 px-8 flex flex-row gap-x-3"
+            onPress={() => router.push("/sign-up")}
+          >
+            <FontAwesome name="user" size={23} color="#" />
+            <Text className="text-primary font-adamina text-2xl  text-center">
+              LogIn
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <View className="flex flex-row justify-center items-center mt-5 gap-x-5 ">
+          <TouchableOpacity>
+            <Image source={images.google} resizeMode="contain" />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image source={images.facebook} resizeMode="contain" />
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );

@@ -15,12 +15,12 @@ const AuthLanding = () => {
         <View className="flex flex-col gap-y-9">
           <View className="flex flex-row items-center gap-9">
             <Image source={images.logo} className="self-start" />
-            <Text className="font-korean-medium text-text-primary text-3xl">
+            <Text className="font-korean-medium text-primary text-3xl">
               Just EAT
             </Text>
           </View>
 
-          <Text className="font-kadwa text-3xl mt-1 p-3 heigh ">
+          <Text className="font-kadwa text-3xl mt-1 p-3  ">
             Satisfy Your Cravings {"\n"} with a Click
           </Text>
           <View className="flex flex-col gap-5">
