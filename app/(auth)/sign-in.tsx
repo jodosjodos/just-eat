@@ -8,11 +8,12 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import Feather from "@expo/vector-icons/Feather";
 import { router } from "expo-router";
 import { useToast } from "react-native-toast-notifications";
+import icons from "@/constants/icons";
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const toast = useToast();
-
+  const [showPassword, setShowPassword] = useState(false);
   const handleSubmit = () => {
     if (!email || !password) {
       toast.show(" all fields  are required!", {
@@ -65,7 +66,18 @@ const SignIn = () => {
                 value={password}
                 onChangeText={setPassword}
                 keyboardType="default"
+                secureTextEntry={!showPassword}
               />
+              <TouchableOpacity
+                onPress={() => setShowPassword(!showPassword)}
+                className="absolute right-5"
+              >
+                <Feather
+                  name={!showPassword ? "eye" : "eye-off"}
+                  size={24}
+                  color="black"
+                />
+              </TouchableOpacity>
             </View>
             <Text className="text-primary font-lekton text-xl underline">
               Forgot Password

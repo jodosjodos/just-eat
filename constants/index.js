@@ -1,2 +1,3 @@
 import * as images from "./images";
-export {images}
+import * as icons from "./icons";
+export {images,icons}

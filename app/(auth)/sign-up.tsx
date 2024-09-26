@@ -14,6 +14,7 @@ const SignUp = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const toast = useToast();
   const handleSubmit = () => {
     if (!email || !username || !password || !confirmPassword) {
@@ -86,7 +87,18 @@ const SignUp = () => {
                 value={password}
                 onChangeText={setPassword}
                 keyboardType="default"
+                secureTextEntry={!showPassword}
               />
+              <TouchableOpacity
+                onPress={() => setShowPassword(!showPassword)}
+                className="absolute right-5"
+              >
+                <Feather
+                  name={!showPassword ? "eye" : "eye-off"}
+                  size={24}
+                  color="black"
+                />
+              </TouchableOpacity>
             </View>
             <View className="flex flex-row items-center ">
               <Feather
@@ -102,35 +114,39 @@ const SignUp = () => {
                 value={confirmPassword}
                 onChangeText={setConfirmPassword}
                 keyboardType="default"
+                secureTextEntry={!showPassword}
               />
+              <TouchableOpacity
+                onPress={() => setShowPassword(!showPassword)}
+                className="absolute right-5"
+              >
+                <Feather
+                  name={!showPassword ? "eye" : "eye-off"}
+                  size={24}
+                  color="black"
+                />
+              </TouchableOpacity>
             </View>
           </View>
         </View>
-
-        <View className="  px-12 py-5">
-          <TouchableOpacity
-            className="bg-primary  rounded-full items-center  py-5 px-8"
-            onPress={handleSubmit}
-          >
-            <Text className="text-white font-adamina text-2xl ">
-              SignUp Now
-            </Text>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity
+          className="bg-primary  rounded-full items-center  py-5 px-8 my-6"
+          onPress={handleSubmit}
+        >
+          <Text className="text-white font-adamina text-2xl ">SignUp Now</Text>
+        </TouchableOpacity>
         <Text className="font-kadwa text-2xl  p-3  text-center ">
           already have account
         </Text>
-        <View className="   px-12 ">
-          <TouchableOpacity
-            className=" bg-secondary  rounded-full items-center  justify-center py-5 px-8 flex flex-row gap-x-3"
-            onPress={() => router.push("/sign-in")}
-          >
-            <FontAwesome name="user" size={23} color="#" />
-            <Text className="text-primary font-adamina text-2xl  text-center">
-              LogIn
-            </Text>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity
+          className=" bg-secondary  rounded-full items-center  justify-center py-5 px-8 flex flex-row gap-x-3"
+          onPress={() => router.push("/sign-in")}
+        >
+          <FontAwesome name="user" size={23} color="#" />
+          <Text className="text-primary font-adamina text-2xl  text-center">
+            LogIn
+          </Text>
+        </TouchableOpacity>
         <View className="flex flex-row justify-center items-center mt-5 gap-x-5 ">
           <TouchableOpacity>
             <Image source={images.google} resizeMode="contain" />
