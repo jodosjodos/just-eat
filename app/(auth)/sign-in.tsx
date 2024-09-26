@@ -19,8 +19,10 @@ const SignIn = () => {
       toast.show(" all fields  are required!", {
         type: "danger",
       });
+      // return
     }
     console.log("all provided ");
+    router.replace("/(tabs)/home");
 
     //TODO: call api for submit
   };
