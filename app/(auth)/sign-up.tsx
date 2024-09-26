@@ -1,30 +1,32 @@
 import { View, Text, TouchableOpacity, Image, TextInput } from "react-native";
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { images } from "@/constants";
 import { styles } from "@/constants/styles";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { router } from "expo-router";
+import { useToast } from "react-native-toast-notifications";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
- 
-
+  const toast = useToast();
   const handleSubmit = () => {
     if (!email || !username || !password || !confirmPassword) {
-      // slideIn()
-      // Toast.show({
-      //   type: "error", // can be 'success', 'error', or 'info'
-      //   text1: "Hello",
-      //   text2: "This is a success toast",
-      // });
+      toast.show(" all fields  are required!", {
+        type: "danger",
+      });
     }
-  };
+    if (password != confirmPassword) {
+      toast.show("passwords must match", {
+        type: "danger",
+      });
+    }
+    //TODO: call api for submit
+  }
   return (
     <SafeAreaView className="bg-white" style={{ zIndex: 1 }}>
       <View className="flex flex-col px-5  h-full">

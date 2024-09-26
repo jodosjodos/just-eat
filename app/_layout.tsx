@@ -16,8 +16,9 @@ import {
 } from "@expo-google-fonts/lekton";
 import { Adamina_400Regular } from "@expo-google-fonts/adamina";
 import * as SplashScreen from "expo-splash-screen";
-// Prevent the splash screen from hiding automatically
-SplashScreen.preventAutoHideAsync();
+import { ToastProvider } from "react-native-toast-notifications";
+import { CustomToast } from "@/components/Custom-Toast";
+// SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   // Load Kreon fonts
@@ -47,19 +48,34 @@ export default function RootLayout() {
   }
 
   return (
-    <Stack>
-      <Stack.Screen
-        name="index"
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="(auth)"
-        options={{
-          headerShown: false,
-        }}
-      />
-    </Stack>
+    <ToastProvider
+      placement="top"
+      successColor="green"
+      dangerColor="red"
+      duration={4000}
+      animationType="slide-in"
+      renderToast={(toastOptions) => (
+        <CustomToast
+          message={toastOptions.message}
+          id={toastOptions.id}
+          type={toastOptions.type as "success" | "danger" | "warning"}
+        />
+      )}
+    >
+      <Stack>
+        <Stack.Screen
+          name="index"
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="(auth)"
+          options={{
+            headerShown: false,
+          }}
+        />
+      </Stack>
+    </ToastProvider>
   );
 }
