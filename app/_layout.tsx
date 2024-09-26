@@ -16,7 +16,6 @@ import {
 } from "@expo-google-fonts/lekton";
 import { Adamina_400Regular } from "@expo-google-fonts/adamina";
 import * as SplashScreen from "expo-splash-screen";
-
 // Prevent the splash screen from hiding automatically
 SplashScreen.preventAutoHideAsync();
 
