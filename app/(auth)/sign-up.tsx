@@ -7,6 +7,7 @@ import { styles } from "@/constants/styles";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { router } from "expo-router";
 import { useToast } from "react-native-toast-notifications";
+import Feather from "@expo/vector-icons/Feather";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -26,7 +27,7 @@ const SignUp = () => {
       });
     }
     //TODO: call api for submit
-  }
+  };
   return (
     <SafeAreaView className="bg-white" style={{ zIndex: 1 }}>
       <View className="flex flex-col px-5  h-full">
@@ -72,7 +73,7 @@ const SignUp = () => {
               />
             </View>
             <View className="flex flex-row items-center ">
-              <AntDesign
+              <Feather
                 style={{ position: "absolute", zIndex: 9, left: 9 }}
                 name="lock"
                 size={25}
@@ -88,7 +89,7 @@ const SignUp = () => {
               />
             </View>
             <View className="flex flex-row items-center ">
-              <AntDesign
+              <Feather
                 style={{ position: "absolute", zIndex: 9, left: 9 }}
                 name="lock"
                 size={25}
