@@ -1,22 +1,8 @@
-import { images } from "@/constants/index";
+import { images } from ".";
 
-export const slides = [
-    {
-      id: "1",
-      title: "Select a restaurant",
-      description: "Choose from a variety \n of restaurants around you.",
-      image: images.restaurant,
-    },
-    {
-      id: "2",
-      title: "Order food you like",
-      description: "Browse the menu and \norder your favorite meals.",
-      image: images.food,
-    },
-    {
-      id: "3",
-      title: "Deliver to your home",
-      description: "Enjoy fast delivery \nright to your door.",
-      image: images.delivery,
-    },
-  ];
+const user = {
+  name: "Fussels lane, Colombo 06",
+  profile: images.userProfile,
+};
+
+//TODO: restaurant is made of [menu in 3 categories cakes , pastries,sandwich,drinks, location  , open time ], each food is[ made of image , price  , rating ,delivery time , delivery price  , description , category ,its restaurant]
