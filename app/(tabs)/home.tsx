@@ -34,7 +34,7 @@ const Home = () => {
           </Link>
         </View>
         <ScrollView>
-          <View className="flex flex-row  justify-between px-3">
+          <View className="flex flex-row  justify-between px-3 items-center">
             <RestaurantOverview restaurant={restaurants[0]} />
             <RestaurantOverview restaurant={restaurants[1]} />
           </View>
