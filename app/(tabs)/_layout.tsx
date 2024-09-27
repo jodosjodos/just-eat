@@ -6,6 +6,7 @@ import Entypo from "@expo/vector-icons/Entypo";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Feather from "@expo/vector-icons/Feather";
+import Ionicons from "@expo/vector-icons/Ionicons";
 const TabIcon = ({
   icon,
   name,
@@ -13,7 +14,7 @@ const TabIcon = ({
   Type,
   color,
 }: {
-  icon: "home" | "react" | "book-open" | "tag";
+  icon: "home" | "restaurant" | "book-open" | "tag";
   name: string;
   focused: boolean;
   color?: string;
@@ -65,17 +66,17 @@ const TabLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="promo"
+        name="restaurant"
         options={{
-          title: "promo",
+          title: "restaurant",
           headerShown:false,
           tabBarIcon: ({ color, focused }) => (
             <TabIcon
             color={color}
-              icon="react"
-              name="promo"
+              icon="restaurant"
+              name="restaurant"
               focused={focused}
-              Type={MaterialCommunityIcons}
+              Type={Ionicons}
             />
           ),
         }}

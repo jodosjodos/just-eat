@@ -2,7 +2,7 @@ import { images } from "@/constants";
 import { useRouter } from "expo-router";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-export default function Index() {
+export default function IndexPage() {
   const router = useRouter();
   const onSubmit = () => {
     router.push("/(auth)");

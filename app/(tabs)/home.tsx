@@ -1,15 +1,45 @@
-import { View, Text } from "react-native";
+import { View, Text, Image, ScrollView } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-
-const home = () => {
+import UserProfile from "@/components/User-profile";
+import SearchComponent from "@/components/home/Search-component";
+import { restaurants, user } from "@/constants/data";
+import { images } from "@/constants";
+import FavoriteFood from "@/components/home/Fav-food";
+import { Link } from "expo-router";
+import RestaurantOverview from "@/components/restaurant/RestaurantOverView";
+const Home = () => {
   return (
-    <SafeAreaView>
-      <View>
-        <Text>home</Text>
+    <SafeAreaView className="bg-white">
+      <View className="flex flex-col gap-2 w-full h-full">
+        <UserProfile name={user.name} profile={user.profile} />
+        <SearchComponent />
+        <View className="w-full p-3">
+          <Image
+            source={images.promo}
+            resizeMode="stretch"
+            className="w-full"
+          />
+        </View>
+        <View>
+          <FavoriteFood />
+        </View>
+        <View className="flex flex-row justify-between px-3 items-center">
+          <Text className="font-kadwa-bold text-2xl">Featured Restaurants</Text>
+          <Link
+            href="/restaurant"
+            className="text-primary font-kadwa-bold   text-lg underline"
+          >
+            See all
+          </Link>
+        </View>
+        <ScrollView>
+          <RestaurantOverview restaurant={restaurants[0]} />
+          <RestaurantOverview restaurant={restaurants[1]}/>
+        </ScrollView>
       </View>
     </SafeAreaView>
   );
 };
 
-export default home;
+export default Home;
