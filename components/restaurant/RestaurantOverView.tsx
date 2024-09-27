@@ -7,13 +7,18 @@ interface RestaurantCardProps {
 
 const RestaurantOverview: React.FC<RestaurantCardProps> = ({ restaurant }) => {
   return (
-    <View>
+    <View className="flex flex-col">
       <Image
-        style={{ width: "50%", height: "55%" }}
-        source={{ uri: restaurant.logo }}
+        className="rounded-lg h-[140px] w-[170px]"
+        // style={{ width: "50%", height: "55%" }}
+        source={restaurant.logo}
       />
-      <Text>{restaurant.name}</Text>
-      <Text>{restaurant.name}</Text>
+      <Text className=" font-kadwa-bold text-">{restaurant.name}</Text>
+      <Text>{restaurant.rs}</Text>
+      <Text>{restaurant.rating}</Text>
+      <Text>
+        {restaurant.deliveryTime} - {restaurant.deliveryPrice}
+      </Text>
     </View>
   );
 };

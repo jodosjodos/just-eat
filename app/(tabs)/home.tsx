@@ -34,8 +34,10 @@ const Home = () => {
           </Link>
         </View>
         <ScrollView>
-          <RestaurantOverview restaurant={restaurants[0]} />
-          <RestaurantOverview restaurant={restaurants[1]}/>
+          <View className="flex flex-row  justify-between px-3">
+            <RestaurantOverview restaurant={restaurants[0]} />
+            <RestaurantOverview restaurant={restaurants[1]} />
+          </View>
         </ScrollView>
       </View>
     </SafeAreaView>
