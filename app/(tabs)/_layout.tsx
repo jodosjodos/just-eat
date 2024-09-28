@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, StatusBar } from "react-native";
 import React from "react";
 import { Tabs } from "expo-router";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
@@ -26,7 +26,7 @@ const TabIcon = ({
 
       <Text
         className={`${
-          focused ? "font-kadwa-bold" : "font-kreon-regular"
+          focused ? "font-kreon-bold" : "font-kreon-regular"
         } text-lg`}
         style={{ color: color }}
       >
@@ -45,15 +45,15 @@ const TabLayout = () => {
         tabBarStyle: {
           borderTopWidth: 0,
           height: 65,
+          paddingVertical: 5,
         },
       }}
     >
       <Tabs.Screen
         name="home"
-        
         options={{
           title: "home",
-          headerShown:false,
+          headerShown: false,
           tabBarIcon: ({ color, focused }) => (
             <TabIcon
               color={color}
@@ -69,10 +69,10 @@ const TabLayout = () => {
         name="restaurant"
         options={{
           title: "restaurant",
-          headerShown:false,
+          headerShown: false,
           tabBarIcon: ({ color, focused }) => (
             <TabIcon
-            color={color}
+              color={color}
               icon="restaurant"
               name="restaurant"
               focused={focused}
@@ -85,10 +85,10 @@ const TabLayout = () => {
         name="order"
         options={{
           title: "order",
-          headerShown:false,
+          headerShown: false,
           tabBarIcon: ({ color, focused }) => (
             <TabIcon
-            color={color}
+              color={color}
               icon="tag"
               name="order"
               focused={focused}
@@ -101,10 +101,10 @@ const TabLayout = () => {
         name="history"
         options={{
           title: "history",
-          headerShown:false,
+          headerShown: false,
           tabBarIcon: ({ color, focused }) => (
             <TabIcon
-            color={color}
+              color={color}
               icon="book-open"
               name="history"
               focused={focused}
