@@ -16,6 +16,7 @@ import restaurant5 from "../assets/images/restaurant5.png";
 import restaurant6 from "../assets/images/restaurant6.png";
 import restaurant7 from "../assets/images/restaurant7.png";
 import restaurant8 from "../assets/images/restaurant8.png";
+import coverImage from "../assets/images/restaurantDetails.png"
 export {
   logo,
   logoX,
@@ -35,4 +36,5 @@ export {
   restaurant6,
   restaurant7,
   restaurant8,
+  coverImage
 };

@@ -11,4 +11,6 @@ export interface Restaurant {
   deliveryPrice: number;
   location: string;
   openTime: string;
+  coverImage: ImageSourcePropType;
+  distance:string
 }
