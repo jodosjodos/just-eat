@@ -1,6 +1,7 @@
 import { ImageSourcePropType } from "react-native";
 
 export interface Restaurant {
+  id: number;
   rs: number;
   name: string;
   rating: number;

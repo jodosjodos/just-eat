@@ -27,7 +27,7 @@ const Home = () => {
         <View className="flex flex-row justify-between px-3 items-center">
           <Text className="font-kadwa-bold text-2xl">Featured Restaurants</Text>
           <Link
-            href="/restaurant"
+            href="/(tabs)/restaurants"
             className="text-primary font-kadwa-bold   text-lg underline"
           >
             See all
