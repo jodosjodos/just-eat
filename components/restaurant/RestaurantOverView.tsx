@@ -18,10 +18,10 @@ const RestaurantOverview: React.FC<RestaurantCardProps> = ({ restaurant }) => {
         className="rounded-lg h-[140px] w-[170px]"
         source={restaurant.logo}
       />
-      <Text className=" font-kadwa-bold text-">{restaurant.name}</Text>
+      <Text className=" font-kadwa-bold">{restaurant.name}</Text>
       <Text className="font-lekton text-xl">Rs {restaurant.rs}</Text>
-      <View className="flex flex-row justify-between items-center gap-4">
-        <Text className="font-adamina bg-primary text-white py-1 px-2 rounded-lg">
+      <View className="flex flex-row justify-between items-center space-x-4">
+        <Text className="font-adamina bg-primary text-white py-1 px-3 rounded-lg">
           {restaurant.rating}
         </Text>
         <Text className="font-kadwa-bold">

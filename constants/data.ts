@@ -23,6 +23,7 @@ export const user: userProps = {
 
 export const restaurants = [
   {
+    id: 1,
     rs: 800,
     name: "The Gourmet Kitchen",
     rating: 4.8,
@@ -34,17 +35,19 @@ export const restaurants = [
     openTime: "10:00 AM - 11:00 PM",
   },
   {
+    id: 2,
     rs: 900,
     name: "Sushi Heaven",
     rating: 4.5,
     deliveryTime: "20-30 mins",
-    logo:images.restaurant2,
+    logo: images.restaurant2,
     typeOfCuisine: "Japanese",
     deliveryPrice: 2.5,
     location: "5678 Ocean Blvd, Seafood Town",
     openTime: "11:00 AM - 10:00 PM",
   },
   {
+    id: 3,
     rs: 900,
     name: "Taco Fiesta",
     rating: 4.7,
@@ -56,6 +59,7 @@ export const restaurants = [
     openTime: "9:00 AM - 10:00 PM",
   },
   {
+    id: 4,
     rs: 900,
     name: "Burger Barn",
     rating: 4.3,
@@ -67,6 +71,7 @@ export const restaurants = [
     openTime: "11:00 AM - 12:00 AM",
   },
   {
+    id: 5,
     rs: 900,
     name: "Pasta Palace",
     rating: 4.9,
@@ -78,6 +83,7 @@ export const restaurants = [
     openTime: "12:00 PM - 10:00 PM",
   },
   {
+    id: 6,
     rs: 900,
     name: "Dragon Express",
     rating: 4.4,
@@ -89,6 +95,7 @@ export const restaurants = [
     openTime: "10:00 AM - 9:30 PM",
   },
   {
+    id: 7,
     rs: 900,
     name: "Biryani House",
     rating: 4.6,
@@ -100,6 +107,7 @@ export const restaurants = [
     openTime: "11:00 AM - 10:00 PM",
   },
   {
+    id: 8,
     rs: 900,
     name: "Kebab King",
     rating: 4.7,
@@ -111,6 +119,7 @@ export const restaurants = [
     openTime: "12:00 PM - 11:00 PM",
   },
   {
+    id: 9,
     rs: 900,
     name: "Pizza Planet",
     rating: 4.8,
@@ -122,6 +131,7 @@ export const restaurants = [
     openTime: "11:00 AM - 1:00 AM",
   },
   {
+    id: 10,
     rs: 900,
     name: "BBQ Brothers",
     rating: 4.6,
@@ -133,6 +143,7 @@ export const restaurants = [
     openTime: "12:00 PM - 10:00 PM",
   },
   {
+    id: 11,
     rs: 900,
     name: "Pho Paradise",
     rating: 4.9,
@@ -144,6 +155,7 @@ export const restaurants = [
     openTime: "10:00 AM - 10:00 PM",
   },
   {
+    id: 12,
     rs: 900,
     name: "Burger Joint",
     rating: 4.5,
@@ -155,6 +167,7 @@ export const restaurants = [
     openTime: "11:00 AM - 12:00 AM",
   },
   {
+    id: 13,
     rs: 900,
     name: "Dim Sum Delight",
     rating: 4.7,
@@ -166,6 +179,7 @@ export const restaurants = [
     openTime: "9:00 AM - 9:00 PM",
   },
   {
+    id: 14,
     rs: 900,
     name: "Crepes & Co.",
     rating: 4.8,
@@ -177,6 +191,7 @@ export const restaurants = [
     openTime: "8:00 AM - 10:00 PM",
   },
   {
+    id: 15,
     rs: 900,
     name: "Thai Treats",
     rating: 4.9,
@@ -188,6 +203,7 @@ export const restaurants = [
     openTime: "11:00 AM - 9:00 PM",
   },
   {
+    id: 16,
     rs: 900,
     name: "Falafel Hub",
     rating: 4.6,
@@ -199,6 +215,7 @@ export const restaurants = [
     openTime: "12:00 PM - 11:00 PM",
   },
   {
+    id: 17,
     rs: 900,
     name: "Ramen Realm",
     rating: 4.8,
@@ -210,6 +227,7 @@ export const restaurants = [
     openTime: "11:00 AM - 11:00 PM",
   },
   {
+    id: 18,
     rs: 900,
     name: "Curry House",
     rating: 4.4,
@@ -221,6 +239,7 @@ export const restaurants = [
     openTime: "12:00 PM - 9:00 PM",
   },
   {
+    id: 19,
     rs: 900,
     name: "Tandoori Delights",
     rating: 4.9,
@@ -232,6 +251,7 @@ export const restaurants = [
     openTime: "11:00 AM - 10:30 PM",
   },
   {
+    id: 20,
     rs: 900,
     name: "Greek Gyro Grill",
     rating: 4.6,
@@ -243,3 +263,4 @@ export const restaurants = [
     openTime: "11:00 AM - 10:00 PM",
   },
 ];
+
