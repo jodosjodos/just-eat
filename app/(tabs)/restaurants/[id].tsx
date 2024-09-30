@@ -19,7 +19,7 @@ const REstaurantDetails = () => {
           <Text>{">"}</Text>
         </View>
         <View>
-          <Text>{restaurant?.rs}</Text>
+          <Text>{restaurant?.price}</Text>
           <Text>{restaurant?.distance}</Text>
           <Text>{restaurant?.rating}</Text>
         </View>
