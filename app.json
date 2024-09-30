@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "restaurant",
-    "slug": "restaurant",
+    "name": "just-eant",
+    "slug": "just-eat",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/logo.png",
-    "scheme": "restaurant",
+    "scheme": "just-eat",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/logoX.png",

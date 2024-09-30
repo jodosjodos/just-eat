@@ -13,32 +13,10 @@ const REstaurantDetails = () => {
   useEffect(() => {
     const foundRestaurant = restaurants.find((res) => res.id === Number(id));
     setRestaurant(foundRestaurant);
-
-    navigation.setOptions({
-      title: "",
-      headerStyle: {
-        backgroundColor: "#D6FFD9",
-      },
-      headerTitle: () => (
-        <View
-          className="flex flex-row items-center space-x-3"
-          onStartShouldSetResponder={(e) => true}
-          onResponderStart={() => {
-            router.push(`/(tabs)/restaurants`);
-          }}
-        >
-          <Ionicons name="arrow-back-circle-sharp" size={28} color="#024220" />
-          <Text className="text-primary font-lekton-bold text-xl mt-2">
-            {foundRestaurant?.name || "Restaurant Details"}{" "}
-          </Text>
-        </View>
-      ),
-      headerBackVisible: false, // This will hide the default back arrow
-    });
   }, [navigation, restaurants, id]);
   return (
-    <SafeAreaView className="bg-white h-full w-full">
-      <View>
+    <SafeAreaView className="bg-white h-full w-full" edges={["top", "bottom"]}>
+      <View className="w-full h-full bg-blue-600">
         <Image source={restaurant?.coverImage} />
         <Text>{restaurant?.name}</Text>
         <Text>{restaurant?.typeOfCuisine}</Text>
