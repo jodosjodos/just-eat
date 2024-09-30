@@ -1,6 +1,6 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
-import { Link, useLocalSearchParams, useNavigation } from "expo-router";
+import { Link, router, useLocalSearchParams, useNavigation } from "expo-router";
 import { restaurants } from "@/constants/data";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Restaurant } from "@/types";
@@ -20,13 +20,20 @@ const REstaurantDetails = () => {
         backgroundColor: "#D6FFD9",
       },
       headerTitle: () => (
-        <View className="flex flex-row items-center space-x-3">
+        <View
+          className="flex flex-row items-center space-x-3"
+          onStartShouldSetResponder={(e) => true}
+          onResponderStart={() => {
+            router.push(`/(tabs)/restaurants`);
+          }}
+        >
           <Ionicons name="arrow-back-circle-sharp" size={28} color="#024220" />
           <Text className="text-primary font-lekton-bold text-xl mt-2">
             {foundRestaurant?.name || "Restaurant Details"}{" "}
           </Text>
         </View>
       ),
+      headerBackVisible: false, // This will hide the default back arrow
     });
   }, [navigation, restaurants, id]);
   return (

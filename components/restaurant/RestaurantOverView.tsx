@@ -13,7 +13,7 @@ const RestaurantOverview: React.FC<RestaurantCardProps> = ({ restaurant }) => {
       className="flex flex-col  hover:cursor-pointer"
       onStartShouldSetResponder={(e) => true}
       onResponderStart={() => {
-        router.push(`/(tabs)/restaurants/${restaurant.id}`);
+        router.replace(`/(tabs)/restaurants/${restaurant.id}`);
       }}
     >
       <Image
