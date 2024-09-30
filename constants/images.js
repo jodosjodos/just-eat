@@ -17,6 +17,11 @@ import restaurant6 from "../assets/images/restaurant6.png";
 import restaurant7 from "../assets/images/restaurant7.png";
 import restaurant8 from "../assets/images/restaurant8.png";
 import coverImage from "../assets/images/restaurantDetails.png"
+import sweetAndSpicy from "../assets/images/Sweet And Spicy Pastry.jpg"
+import sweetAndSpicySmall from "../assets/images/Sweet And Spicy PastrySmall.jpg"
+import tripleChocolate from "../assets/images/Triple Chocolate Brownie.jpg"
+import tripleChocolateSmall from "../assets/images/Triple Chocolate BrownieSmall.jpg"
+import veggie from "../assets/images/Veggie Delight SandwichSmall.jpg"
 export {
   logo,
   logoX,
@@ -36,5 +41,10 @@ export {
   restaurant6,
   restaurant7,
   restaurant8,
-  coverImage
+  coverImage,
+  sweetAndSpicy,
+  sweetAndSpicySmall,
+  tripleChocolate,
+  tripleChocolateSmall,
+  veggie,
 };
