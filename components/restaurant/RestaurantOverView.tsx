@@ -19,7 +19,7 @@ const RestaurantOverview: React.FC<RestaurantCardProps> = ({ restaurant }) => {
         source={restaurant.logo}
       />
       <Text className=" font-kadwa-bold">{restaurant.name}</Text>
-      <Text className="font-lekton text-xl">$ {restaurant.price}</Text>
+      <Text className="font-lekton-bold text-primary text-xl">${restaurant.price}</Text>
       <View className="flex flex-row justify-between items-center space-x-4">
         <Text className="font-adamina bg-primary text-white py-1 px-3 rounded-lg">
           {restaurant.rating}
