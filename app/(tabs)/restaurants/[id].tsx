@@ -9,6 +9,13 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 const REstaurantDetails = () => {
   const [restaurant, setRestaurant] = useState<Restaurant>();
+  const [selectedFilter, setSelectedFilter] = useState<string>("All Menu"); // Set default filter
+
+  const filters = ["All Menu", "Cakes", "Pastries", "Sandwich", "Drinks"];
+
+  const handleFilterClick = (filter: string) => {
+    setSelectedFilter(filter); // Update the selected filter
+  };
   const navigation = useNavigation();
   const { id } = useLocalSearchParams();
   useEffect(() => {
@@ -75,13 +82,23 @@ const REstaurantDetails = () => {
             </Text>
           </TouchableOpacity>
         </View>
-        <View>
-          <Text>All Menu</Text>
-          <Text>Cakes</Text>
-          <Text>Pastries</Text>
-          <Text>Sandwich</Text>
-          <Text>Drinks</Text>
+        <View className="flex flex-row items-center justify-around">
+          {filters.map((filter) => (
+            <TouchableOpacity
+              key={filter}
+              onPress={() => handleFilterClick(filter)}
+            >
+              <Text
+                className={`text-lg cursor-pointer ${
+                  selectedFilter === filter ? "text-primary font-kadwa-bold underline" : "text-black font-kadwa"
+                }`}
+              >
+                {filter}
+              </Text>
+            </TouchableOpacity>
+          ))}
         </View>
+        <View>{/* display foods in that restaurant */}</View>
       </View>
     </SafeAreaView>
   );
