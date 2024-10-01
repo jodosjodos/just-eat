@@ -51,7 +51,7 @@ const REstaurantDetails = () => {
               <EvilIcons name="location" size={28} color="#273B4A" />
             </Text>
             <Text className="font-kreon-bold text-xl">
-              {restaurant?.distance}
+              {restaurant?.distance} 
             </Text>
           </View>
           <View className="flex flex-row items-center space-x-1">
