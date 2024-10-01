@@ -1,2 +1,2 @@
-export {userProps}from "./user";
-export {Restaurant} from "./restaurant"
+export { userProps } from "./user";
+export { Restaurant, FoodItem } from "./restaurant";

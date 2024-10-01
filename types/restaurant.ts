@@ -12,5 +12,16 @@ export interface Restaurant {
   location: string;
   openTime: string;
   coverImage: ImageSourcePropType;
-  distance:string
+  distance: string;
+}
+export interface FoodItem {
+  id: number;
+  name: string;
+  smallImage: ImageSourcePropType;
+  coverImage: ImageSourcePropType;
+  deliveryPrice: string;
+  rating: number;
+  price: number;
+  restaurant_id: number;
+  category: string;
 }

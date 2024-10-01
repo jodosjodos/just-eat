@@ -1,27 +1,59 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, FlatList } from "react-native";
 import React, { useEffect, useState } from "react";
-import { Link, router, useLocalSearchParams, useNavigation } from "expo-router";
-import { restaurants } from "@/constants/data";
+import { Link, useLocalSearchParams, useNavigation } from "expo-router";
+import { restaurantFoods, restaurants } from "@/constants/data";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Restaurant } from "@/types";
+import { FoodItem, Restaurant } from "@/types";
 import EvilIcons from "@expo/vector-icons/EvilIcons";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
+import FoodDetails from "@/components/restaurant/Food-item";
 const REstaurantDetails = () => {
-  const [restaurant, setRestaurant] = useState<Restaurant>();
-  const [selectedFilter, setSelectedFilter] = useState<string>("All Menu"); // Set default filter
+  const [restaurant, setRestaurant] = useState<Restaurant | undefined>(); // Handle undefined case
+  const [foodItems, setFoodItems] = useState<FoodItem[]>([]);
+  const [selectedFilter, setSelectedFilter] = useState<string>("All Menu");
+  const [filters, setFilters] = useState<string[]>(["All Menu"]); // Initialize filters with "All Menu"
 
-  const filters = ["All Menu", "Cakes", "Pastries", "Sandwich", "Drinks"];
-
+  // Handle filter click
   const handleFilterClick = (filter: string) => {
-    setSelectedFilter(filter); // Update the selected filter
+    setSelectedFilter(filter);
+
+    // Filter the food items based on the selected filter
+    const filteredFoodItems = restaurantFoods.filter(
+      (food) =>
+        food.restaurant_id === restaurant?.id &&
+        (filter === "All Menu" || food.category === filter) // Only apply the filter if not "All Menu"
+    );
+    setFoodItems(filteredFoodItems);
   };
-  const navigation = useNavigation();
+
+  // Fetch restaurant and food items when component mounts or id changes
   const { id } = useLocalSearchParams();
   useEffect(() => {
     const foundRestaurant = restaurants.find((res) => res.id === Number(id));
     setRestaurant(foundRestaurant);
-  }, [navigation, restaurants, id]);
+
+    if (foundRestaurant) {
+      // Fetch food items for the restaurant
+      const filteredFoodItems = restaurantFoods.filter(
+        (food) => food.restaurant_id === foundRestaurant.id
+      );
+      setFoodItems(filteredFoodItems);
+
+      // Extract unique categories from the food items and create dynamic filters
+      const uniqueCategories = [
+        ...new Set(filteredFoodItems.map((food) => food.category)),
+      ];
+
+      // Add "All Menu" as the first option and set the filters
+      setFilters(["All Menu", ...uniqueCategories]);
+    } else {
+      // Reset if no restaurant found
+      setFoodItems([]);
+      setFilters(["All Menu"]); // Reset filters
+    }
+  }, [restaurants, id]);
+
   return (
     <SafeAreaView className="bg-white h-full w-full" edges={["top", "bottom"]}>
       <View className="w-full h-full flex flex-col space-y-3">
@@ -90,7 +122,9 @@ const REstaurantDetails = () => {
             >
               <Text
                 className={`text-lg cursor-pointer ${
-                  selectedFilter === filter ? "text-primary font-kadwa-bold underline" : "text-black font-kadwa"
+                  selectedFilter === filter
+                    ? "text-primary font-kadwa-bold underline"
+                    : "text-black font-kadwa"
                 }`}
               >
                 {filter}
@@ -98,7 +132,13 @@ const REstaurantDetails = () => {
             </TouchableOpacity>
           ))}
         </View>
-        <View>{/* display foods in that restaurant */}</View>
+        <View>
+          <FlatList
+            data={foodItems}
+            keyExtractor={(foodItem) => foodItem.id.toString()}
+            renderItem={({ item }) => <FoodDetails foodItem={item} />}
+          />
+        </View>
       </View>
     </SafeAreaView>
   );
