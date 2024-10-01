@@ -39,36 +39,38 @@ const REstaurantDetails = () => {
             {">"}
           </Link>
         </View>
-        <View className="flex flex-row items-center justify-between">
+        <View className="flex flex-row items-center justify-between px-6">
           <View className="flex flex-row items-center space-x-1">
             <Text className="bg-secondary p-1 rounded-full">
               <FontAwesome5 name="dollar-sign" size={28} color="#273B4A" />
             </Text>
-            <Text>{restaurant?.price}</Text>
+            <Text className="font-kreon-bold text-xl">{restaurant?.price}</Text>
           </View>
           <View className="flex flex-row items-center space-x-1">
             <Text className="bg-secondary p-1 rounded-full">
               <EvilIcons name="location" size={28} color="#273B4A" />
             </Text>
             <Text className="font-kreon-bold text-xl">
-              {restaurant?.distance} 
+              {restaurant?.distance}
             </Text>
           </View>
           <View className="flex flex-row items-center space-x-1">
             <Text className="bg-secondary p-1 rounded-full">
               <AntDesign name="star" size={28} color="#273B4A" />
             </Text>
-            <Text>{restaurant?.rating}</Text>
+            <Text className="font-kreon-bold text-xl">
+              {restaurant?.rating}
+            </Text>
           </View>
         </View>
-        <View className="flex flex-row items-center justify-between">
-          <TouchableOpacity className="bg-primary  rounded-full items-center  py-5 px-8">
-            <Text className="text-white font-adamina text-2xl ">
+        <View className="flex flex-row items-center justify-center space-x-6 border-y-8 py-4 border-secondary">
+          <TouchableOpacity className="bg-primary  rounded-full items-center py-3 px-5">
+            <Text className="text-white font-adamina text-lg ">
               See Similar
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity className="bg-primary  rounded-full items-center  py-5 px-8">
-            <Text className="text-white font-adamina text-2xl ">
+          <TouchableOpacity className="bg-primary  rounded-full items-center  px-5 py-3">
+            <Text className="text-white font-adamina text-lg ">
               Most popular
             </Text>
           </TouchableOpacity>
