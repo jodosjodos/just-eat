@@ -15,6 +15,7 @@ import EvilIcons from "@expo/vector-icons/EvilIcons";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import FoodDetails from "@/components/restaurant/Food-item";
+import Entypo from "@expo/vector-icons/Entypo";
 const REstaurantDetails = () => {
   const [restaurant, setRestaurant] = useState<Restaurant | undefined>(); // Handle undefined case
   const [foodItems, setFoodItems] = useState<FoodItem[]>([]);
@@ -80,9 +81,13 @@ const REstaurantDetails = () => {
             {restaurant?.typeOfCuisine}
           </Text>
         </View>
-        <Text className="font-kadwa text-md underline ml-6">
-          {restaurant?.location}
-        </Text>
+        <View className="flex flex-row space-x-2 px-5">
+            <Entypo name="location" size={22} color="#273B4A" />
+          <Text className="font-kadwa text-lg underline ml-6">
+            {restaurant?.location}
+          </Text>
+        </View>
+
         <View className="flex flex-row items-center  px-6 space-x-2">
           <Text className="font-kadwa underline">
             Tap for hours, info and more{" "}
