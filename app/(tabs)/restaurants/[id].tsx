@@ -82,30 +82,28 @@ const REstaurantDetails = () => {
           </Text>
         </View>
         <View className="flex flex-row space-x-2 px-5">
-            <Entypo name="location" size={22} color="#273B4A" />
+          <Entypo name="location" size={22} color="#273B4A" />
           <Text className="font-kadwa text-lg underline ml-6">
             {restaurant?.location}
           </Text>
         </View>
 
-        <View className="flex flex-row items-center  px-6 space-x-2">
-          <Text className="font-kadwa underline">
-            Tap for hours, info and more{" "}
+        <View className="flex flex-row space-x-2 px-5">
+          <AntDesign name="clockcircle" size={24} color="#273B4A" />
+          <Text className="font-kadwa text-lg underline ml-6">
+            {restaurant?.openTime}
           </Text>
-          <Link href="/" className=" text-3xl">
-            {">"}
-          </Link>
         </View>
         <View className="flex flex-row items-center justify-between px-6">
           <View className="flex flex-row items-center space-x-1">
             <Text className="bg-secondary p-1 rounded-full">
-              <FontAwesome5 name="dollar-sign" size={28} color="#273B4A" />
+              <FontAwesome5 name="dollar-sign" size={25} color="#273B4A" />
             </Text>
             <Text className="font-kreon-bold text-xl">{restaurant?.price}</Text>
           </View>
           <View className="flex flex-row items-center space-x-1">
             <Text className="bg-secondary p-1 rounded-full">
-              <EvilIcons name="location" size={28} color="#273B4A" />
+              <Entypo name="location" size={25} color="#273B4A" />
             </Text>
             <Text className="font-kreon-bold text-xl">
               {restaurant?.distance}
