@@ -55,7 +55,6 @@ const REstaurantDetails = () => {
   }, [restaurants, id]);
   return (
     <SafeAreaView className="bg-white h-full w-full" edges={["top", "bottom"]}>
-      <ScrollView>
 
       <View className="w-full h-full flex flex-col space-y-3">
         <Image source={restaurant?.coverImage} />
@@ -116,7 +115,7 @@ const REstaurantDetails = () => {
           </TouchableOpacity>
         </View>
 
-        <View>
+        {/* <View> */}
           <FlatList
             data={foodItems}
             keyExtractor={(foodItem) => foodItem.id.toString()}
@@ -142,9 +141,8 @@ const REstaurantDetails = () => {
               </View>
             }
           />
-        </View>
+        {/* </View> */}
       </View>
-      </ScrollView>
     </SafeAreaView>
   );
 };
