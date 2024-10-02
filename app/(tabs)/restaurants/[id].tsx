@@ -1,6 +1,13 @@
-import { View, Text, Image, TouchableOpacity, FlatList, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  FlatList,
+  ScrollView,
+} from "react-native";
 import React, { useEffect, useState } from "react";
-import { Link, useLocalSearchParams, useNavigation } from "expo-router";
+import { Link, router, useLocalSearchParams } from "expo-router";
 import { restaurantFoods, restaurants } from "@/constants/data";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FoodItem, Restaurant } from "@/types";
@@ -53,11 +60,18 @@ const REstaurantDetails = () => {
       setFilters(["All Menu"]); // Reset filters
     }
   }, [restaurants, id]);
+
+  const goBack = () => {
+    router.push("/(tabs)/restaurants/");
+  };
   return (
     <SafeAreaView className="bg-white h-full w-full" edges={["top", "bottom"]}>
-
-      <View className="w-full h-full flex flex-col space-y-3">
+      <View className="w-full h-full flex flex-col space-y-3 relative">
         <Image source={restaurant?.coverImage} />
+        <TouchableOpacity className="absolute top-0 right-2" onPress={goBack}>
+          <AntDesign name="closecircleo" size={28} color="#024220" />
+        </TouchableOpacity>
+
         <View className="flex flex-row ml-6 space-x-1">
           <Text className="font-kadwa-bold   text-3xl leading-none  pt-2">
             {restaurant?.name}
@@ -116,31 +130,32 @@ const REstaurantDetails = () => {
         </View>
 
         {/* <View> */}
-          <FlatList
-            data={foodItems}
-            keyExtractor={(foodItem) => foodItem.id.toString()}
-            renderItem={({ item }) => <FoodDetails foodItem={item} />}
-            ListHeaderComponent={
-              <View className="flex flex-row items-center justify-around">
-                {filters.map((filter) => (
-                  <TouchableOpacity
-                    key={filter}
-                    onPress={() => handleFilterClick(filter)}
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={foodItems}
+          keyExtractor={(foodItem) => foodItem.id.toString()}
+          renderItem={({ item }) => <FoodDetails foodItem={item} />}
+          ListHeaderComponent={
+            <View className="flex flex-row items-center justify-around">
+              {filters.map((filter) => (
+                <TouchableOpacity
+                  key={filter}
+                  onPress={() => handleFilterClick(filter)}
+                >
+                  <Text
+                    className={`text-lg cursor-pointer ${
+                      selectedFilter === filter
+                        ? "text-primary font-kadwa-bold underline"
+                        : "text-black font-kadwa"
+                    }`}
                   >
-                    <Text
-                      className={`text-lg cursor-pointer ${
-                        selectedFilter === filter
-                          ? "text-primary font-kadwa-bold underline"
-                          : "text-black font-kadwa"
-                      }`}
-                    >
-                      {filter}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
-              </View>
-            }
-          />
+                    {filter}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          }
+        />
         {/* </View> */}
       </View>
     </SafeAreaView>
