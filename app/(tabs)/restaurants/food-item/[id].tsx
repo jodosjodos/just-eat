@@ -8,19 +8,24 @@ import { Image } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import EvilIcons from "@expo/vector-icons/EvilIcons";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
+import { useToast } from "react-native-toast-notifications";
 const FoodItemPage = () => {
   const [foodItem, setFoodItem] = useState<FoodItem | undefined>();
   const [numberOfFood, setNumberOfFood] = useState<number>(1);
   const { id } = useLocalSearchParams();
+  const toast = useToast();
   useEffect(() => {
     const fetchedFoodItem = restaurantFoods.find(
       (food) => food.id === Number(id)
     );
     setFoodItem(fetchedFoodItem);
   });
-  const addToCart=()=>{
-    //TODO: add food  in cart page 
-  }
+  const addToCart = () => {
+    toast.show(" food added to cart successfully", {
+      type: "success",
+    });
+    //TODO: add food  in cart page
+  };
   return (
     <SafeAreaView className="bg-white h-full w-full" edges={["top", "bottom"]}>
       <View className="w-full h-full flex flex-col space-y-3 relative">
@@ -73,7 +78,10 @@ const FoodItemPage = () => {
           </View>
         </View>
         <View className="flex flex-row items-center justify-center space-x-6 border-y-8 py-3 border-secondary">
-          <TouchableOpacity className="bg-primary  rounded-full items-center py-3 px-8" onPress={addToCart}>
+          <TouchableOpacity
+            className="bg-primary  rounded-full items-center py-3 px-8"
+            onPress={addToCart}
+          >
             <Text className="text-white font-adamina text-lg  text-center">
               Add to Cart
             </Text>
