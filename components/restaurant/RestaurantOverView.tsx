@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Pressable } from "react-native";
 import React from "react";
 import { Restaurant } from "@/types";
 import { router } from "expo-router";
@@ -6,20 +6,18 @@ interface RestaurantCardProps {
   restaurant: Restaurant;
 }
 
-//TODO: go to restaurant details page
 const RestaurantOverview: React.FC<RestaurantCardProps> = ({ restaurant }) => {
   return (
-    <View
-      className="flex flex-col  hover:cursor-pointer"
-      onStartShouldSetResponder={(e) => true}
-      onResponderStart={() => {
-        router.replace(`/(tabs)/restaurants/${restaurant.id}`);
-      }}
-    >
-      <Image
-        className="rounded-lg h-[140px] w-[170px]"
-        source={restaurant.logo}
-      />
+    <View className="flex flex-col  hover:cursor-pointer">
+      <Pressable
+        onPress={() => router.replace(`/(tabs)/restaurants/${restaurant.id}`)}
+      >
+        <Image
+          className="rounded-lg h-[140px] w-[170px]"
+          source={restaurant.logo}
+        />
+      </Pressable>
+
       <Text className=" font-kadwa-bold">{restaurant.name}</Text>
       <Text className="font-lekton-bold text-primary text-xl">
         ${restaurant.price}

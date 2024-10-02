@@ -1,6 +1,7 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
 import { FoodItem } from "@/types";
+import { Link } from "expo-router";
 interface FoodITemProp {
   foodItem: FoodItem;
 }
@@ -18,11 +19,14 @@ const FoodDetails: React.FC<FoodITemProp> = ({ foodItem }) => {
         resizeMode="cover"
       />
       <View>
-        <Text className=" font-kadwa-bold">{foodItem.name}</Text>
+        <Link
+          href={`/(tabs)/restaurants/food-item/${foodItem.id}`}
+          className=" font-kadwa-bold text-primary underline"
+        >
+          {foodItem.name}
+        </Link>
         <View className="flex flex-row  items-center space-x-4">
-          <Text className="  text-xl font-lekton">
-            ${foodItem.price}
-          </Text>
+          <Text className="  text-xl font-lekton">${foodItem.price}</Text>
           <Text className="text-xl font-lekton">.{foodItem.deliveryPrice}</Text>
         </View>
         <Text className="font-adamina bg-primary text-white py-1 px-2 rounded-lg w-10">
