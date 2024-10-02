@@ -90,6 +90,7 @@ const SignIn = () => {
         <TouchableOpacity
           className="bg-secondary  rounded-full items-center  py-5 px-8 w-full  flex flex-row justify-center gap-x-2  my-8"
           onPress={handleSubmit}
+          style={styles.shadowCustom}
         >
           <FontAwesome name="user" size={19} color="#" />
           <Text className="text-primary font-adamina text-2xl ">LogIn</Text>

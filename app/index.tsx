@@ -1,4 +1,5 @@
 import { images } from "@/constants";
+import { styles } from "@/constants/styles";
 import { useRouter } from "expo-router";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -21,6 +22,7 @@ export default function IndexPage() {
         <TouchableOpacity
           className="bg-primary py-5 px-9 rounded-xl w-72  items-center"
           onPress={onSubmit}
+          style={styles.shadowCustom}
         >
           <Text className="font-kreon-bold text-white text-3xl">
             GET STARTED

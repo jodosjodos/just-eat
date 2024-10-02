@@ -8,7 +8,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { styles } from "@/constants/styles";
 import { useRouter } from "expo-router";
 const AuthLanding = () => {
-  const router  = useRouter()
+  const router = useRouter();
   return (
     <SafeAreaView className="bg-white ">
       <View className="flex flex-col px-5  h-full  justify-between">
@@ -54,11 +54,17 @@ const AuthLanding = () => {
         </View>
 
         <View className="self-start flex flex-row  w-full items-center justify-center gap-x-5  p-12">
-          <TouchableOpacity className=" bg-secondary  rounded-full items-center  py-5 px-8 flex flex-row gap-x-3" onPress={()=>router.push("/sign-in")}>
+          <TouchableOpacity
+            className=" bg-secondary  rounded-full items-center  py-5 px-8 flex flex-row gap-x-3"
+            onPress={() => router.push("/sign-in")}
+          >
             <FontAwesome name="user" size={15} color="#" />
             <Text className="text-primary font-adamina text-2xl ">LogIn</Text>
           </TouchableOpacity>
-          <TouchableOpacity className="bg-primary  rounded-full items-center  py-5 px-8" onPress={()=> router.push("/sign-up")}>
+          <TouchableOpacity
+            className="bg-primary  rounded-full items-center  py-5 px-8"
+            onPress={() => router.push("/sign-up")}
+          >
             <Text className="text-white font-adamina text-2xl ">SignUp</Text>
           </TouchableOpacity>
         </View>
