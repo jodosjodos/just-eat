@@ -14,7 +14,7 @@ const TabIcon = ({
   Type,
   color,
 }: {
-  icon: "home" | "restaurant" | "book-open" | "tag";
+  icon: "home" | "restaurant" | "shopping-cart" | "tag";
   name: string;
   focused: boolean;
   color?: string;
@@ -98,15 +98,15 @@ const TabLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="history"
+        name="cart"
         options={{
-          title: "history",
+          title: "cart",
           headerShown: false,
           tabBarIcon: ({ color, focused }) => (
             <TabIcon
               color={color}
-              icon="book-open"
-              name="history"
+              icon="shopping-cart"
+              name="cart"
               focused={focused}
               Type={Feather}
             />
