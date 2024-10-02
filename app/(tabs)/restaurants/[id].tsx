@@ -68,7 +68,7 @@ const REstaurantDetails = () => {
     <SafeAreaView className="bg-white h-full w-full" edges={["top", "bottom"]}>
       <View className="w-full h-full flex flex-col space-y-3 relative">
         <Image source={restaurant?.coverImage} />
-        <TouchableOpacity className="absolute top-0 right-2" onPress={goBack}>
+        <TouchableOpacity className="absolute top-0 left-2" onPress={goBack}>
           <AntDesign name="closecircleo" size={28} color="#024220" />
         </TouchableOpacity>
 
