@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity, FlatList } from "react-native";
+import { View, Text, Image, TouchableOpacity, FlatList, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Link, useLocalSearchParams, useNavigation } from "expo-router";
 import { restaurantFoods, restaurants } from "@/constants/data";
@@ -53,9 +53,10 @@ const REstaurantDetails = () => {
       setFilters(["All Menu"]); // Reset filters
     }
   }, [restaurants, id]);
-
   return (
     <SafeAreaView className="bg-white h-full w-full" edges={["top", "bottom"]}>
+      <ScrollView>
+
       <View className="w-full h-full flex flex-col space-y-3">
         <Image source={restaurant?.coverImage} />
         <View className="flex flex-row ml-6 space-x-1">
@@ -114,32 +115,36 @@ const REstaurantDetails = () => {
             </Text>
           </TouchableOpacity>
         </View>
-        <View className="flex flex-row items-center justify-around">
-          {filters.map((filter) => (
-            <TouchableOpacity
-              key={filter}
-              onPress={() => handleFilterClick(filter)}
-            >
-              <Text
-                className={`text-lg cursor-pointer ${
-                  selectedFilter === filter
-                    ? "text-primary font-kadwa-bold underline"
-                    : "text-black font-kadwa"
-                }`}
-              >
-                {filter}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </View>
+
         <View>
           <FlatList
             data={foodItems}
             keyExtractor={(foodItem) => foodItem.id.toString()}
             renderItem={({ item }) => <FoodDetails foodItem={item} />}
+            ListHeaderComponent={
+              <View className="flex flex-row items-center justify-around">
+                {filters.map((filter) => (
+                  <TouchableOpacity
+                    key={filter}
+                    onPress={() => handleFilterClick(filter)}
+                  >
+                    <Text
+                      className={`text-lg cursor-pointer ${
+                        selectedFilter === filter
+                          ? "text-primary font-kadwa-bold underline"
+                          : "text-black font-kadwa"
+                      }`}
+                    >
+                      {filter}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+            }
           />
         </View>
       </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
