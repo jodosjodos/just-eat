@@ -1,16 +1,25 @@
 import { View, Text } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocalSearchParams } from "expo-router";
-
-const FoodItem = () => {
+import { SafeAreaView } from "react-native-safe-area-context";
+import { restaurantFoods } from "@/constants/data";
+import { FoodItem } from "@/types";
+const FoodItemPage = () => {
+  const [foodItem, setFoodItem] = useState<FoodItem | undefined>();
   const { id } = useLocalSearchParams();
-  console.log("there");
-
+  useEffect(() => {
+    const fetchedFoodItem = restaurantFoods.find(
+      (food) => food.id === Number(id)
+    );
+    setFoodItem(fetchedFoodItem);
+  });
   return (
-    <View>
-      <Text>FoodItem</Text>
-    </View>
+    <SafeAreaView className="bg-white">
+      <View className="h-full w-full">
+        <Text>{id}</Text>
+      </View>
+    </SafeAreaView>
   );
 };
 
-export default FoodItem;
+export default FoodItemPage;

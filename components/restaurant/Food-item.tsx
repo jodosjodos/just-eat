@@ -9,9 +9,7 @@ interface FoodITemProp {
 const FoodDetails: React.FC<FoodITemProp> = ({ foodItem }) => {
   return (
     <View
-      className="flex flex-row  hover:cursor-pointer px-6 space-x-2"
-      onStartShouldSetResponder={(e) => true}
-      onResponderStart={() => {}}
+      className="flex flex-row  hover:cursor-pointer px-6 space-x-2 py-3 border-b border-secondary"
     >
       <Image
         className="rounded-xl w-1/4 h-[90%]  bg-blue-400"
@@ -21,7 +19,7 @@ const FoodDetails: React.FC<FoodITemProp> = ({ foodItem }) => {
       <View>
         <Link
           href={`/(tabs)/restaurants/food-item/${foodItem.id}`}
-          className=" font-kadwa-bold text-primary underline"
+          className=" font-kadwa-bold text-primary underline text-lg"
         >
           {foodItem.name}
         </Link>
