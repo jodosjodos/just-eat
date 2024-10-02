@@ -88,7 +88,6 @@ const REstaurantDetails = () => {
             Tap for hours, info and more{" "}
           </Text>
           <Link href="/" className=" text-3xl">
-            {/* <FontAwesome5 name="leftarrow" size={24} color="black" /> */}
             {">"}
           </Link>
         </View>
@@ -116,13 +115,13 @@ const REstaurantDetails = () => {
             </Text>
           </View>
         </View>
-        <View className="flex flex-row items-center justify-center space-x-6 border-y-8 py-4 border-secondary">
-          <TouchableOpacity className="bg-primary  rounded-full items-center py-3 px-5">
+        <View className="flex flex-row items-center justify-center space-x-6 border-y-8 py-3 border-secondary">
+          <TouchableOpacity className="bg-primary  rounded-full items-center py-2 px-5">
             <Text className="text-white font-adamina text-lg ">
               See Similar
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity className="bg-primary  rounded-full items-center  px-5 py-3">
+          <TouchableOpacity className="bg-primary  rounded-full items-center  px-5 py-2">
             <Text className="text-white font-adamina text-lg ">
               Most popular
             </Text>
