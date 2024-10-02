@@ -6,7 +6,6 @@ import { restaurantFoods } from "@/constants/data";
 import { FoodItem } from "@/types";
 import { Image } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import EvilIcons from "@expo/vector-icons/EvilIcons";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { useToast } from "react-native-toast-notifications";
 const FoodItemPage = () => {
