@@ -10,6 +10,7 @@ import EvilIcons from "@expo/vector-icons/EvilIcons";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 const FoodItemPage = () => {
   const [foodItem, setFoodItem] = useState<FoodItem | undefined>();
+  const [numberOfFood, setNumberOfFood] = useState<number>(1);
   const { id } = useLocalSearchParams();
   useEffect(() => {
     const fetchedFoodItem = restaurantFoods.find(
@@ -35,8 +36,18 @@ const FoodItemPage = () => {
           <Text className="font-kadwa-bold   text-3xl leading-none  pt-2">
             {foodItem?.name}
           </Text>
-          <Text className="font-lekton text-xl leading-none">
+          <Text className="font-lekton text-2xl leading-none">
             .{foodItem?.category}
+          </Text>
+        </View>
+        <View className="flex flex-row space-x-2 px-5">
+          <FontAwesome5 name="dollar-sign" size={24} color="#273B4A" />
+          <Text className="font-kadwa text-lg underline ml-8">
+            {foodItem?.price}
+          </Text>
+          <Text className="font-kreon-regular self-end text-md ml-8">
+            {/* {foodItem?.rating} */}
+            price
           </Text>
         </View>
         <View className="flex flex-row items-center justify-between px-6">
@@ -44,14 +55,11 @@ const FoodItemPage = () => {
             <Text className="bg-secondary p-1 rounded-full">
               <FontAwesome5 name="dollar-sign" size={28} color="#273B4A" />
             </Text>
-            <Text className="font-kreon-bold text-xl">{foodItem?.price}</Text>
-          </View>
-          <View className="flex flex-row items-center space-x-1">
-            <Text className="bg-secondary p-1 rounded-full">
-              <EvilIcons name="location" size={28} color="#273B4A" />
-            </Text>
             <Text className="font-kreon-bold text-xl">
               {foodItem?.deliveryPrice}
+            </Text>
+            <Text className="font-kreon text-md self-end">
+              {"delivery price"}
             </Text>
           </View>
           <View className="flex flex-row items-center space-x-1">
@@ -59,6 +67,31 @@ const FoodItemPage = () => {
               <AntDesign name="star" size={28} color="#273B4A" />
             </Text>
             <Text className="font-kreon-bold text-xl">{foodItem?.rating}</Text>
+            <Text className="font-kreon text-md self-end">rating</Text>
+          </View>
+        </View>
+        <View className="flex flex-row items-center justify-center space-x-6 border-y-8 py-3 border-secondary">
+          <TouchableOpacity className="bg-primary  rounded-full items-center py-3 px-8">
+            <Text className="text-white font-adamina text-lg  text-center">
+              Add to Cart
+            </Text>
+          </TouchableOpacity>
+          <View className="flex flex-row items-center space-x-3">
+            <TouchableOpacity
+              className="py-2 px-4 bg-secondary border-2 border-primary rounded-full"
+              onPress={() =>
+                setNumberOfFood((prev) => (prev > 1 ? prev - 1 : prev))
+              }
+            >
+              <Text className="text-center">-</Text>
+            </TouchableOpacity>
+            <Text className="font-adamina text-lg">{numberOfFood}</Text>
+            <TouchableOpacity
+              className="py-2 px-3 bg-secondary border-2 border-primary rounded-full"
+              onPress={() => setNumberOfFood((prev) => prev + 1)}
+            >
+              <Text className="text-center">+</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
