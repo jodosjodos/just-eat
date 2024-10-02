@@ -18,6 +18,9 @@ const FoodItemPage = () => {
     );
     setFoodItem(fetchedFoodItem);
   });
+  const addToCart=()=>{
+    //TODO: add food  in cart page 
+  }
   return (
     <SafeAreaView className="bg-white h-full w-full" edges={["top", "bottom"]}>
       <View className="w-full h-full flex flex-col space-y-3 relative">
@@ -25,7 +28,6 @@ const FoodItemPage = () => {
           className=" h-[50%] w-[100%] rounded-3xl"
           resizeMode="cover"
           source={foodItem?.coverImage}
-          // style={{ width: "100%", height: "30%", aspectRatio: 1 ,backgroundColor:"blue" }} // Set to 100% width and 30% height
         />
 
         <TouchableOpacity className="absolute top-0 left-2" onPress={() => {}}>
@@ -71,7 +73,7 @@ const FoodItemPage = () => {
           </View>
         </View>
         <View className="flex flex-row items-center justify-center space-x-6 border-y-8 py-3 border-secondary">
-          <TouchableOpacity className="bg-primary  rounded-full items-center py-3 px-8">
+          <TouchableOpacity className="bg-primary  rounded-full items-center py-3 px-8" onPress={addToCart}>
             <Text className="text-white font-adamina text-lg  text-center">
               Add to Cart
             </Text>
