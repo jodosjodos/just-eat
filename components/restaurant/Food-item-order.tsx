@@ -6,7 +6,6 @@ import { foodItemOrder } from "@/types/restaurant";
 interface FoodITemProp {
   foodItem: foodItemOrder;
 }
-//TODO:handle way to move food from cart to order page
 const FoodDetailsOrder: React.FC<FoodITemProp> = ({ foodItem }) => {
   return (
     <View className="flex flex-row justify-between   py-3 border-b border-secondary">
