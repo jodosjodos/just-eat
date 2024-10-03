@@ -1,13 +1,21 @@
-import { View, Text, Pressable, FlatList } from "react-native";
-import React, { useEffect } from "react";
+import {
+  View,
+  Text,
+  Pressable,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router, useNavigation } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { reduxFoodData } from "@/constants/data";
-import FoodDetailsCart from "@/components/restaurant/Food-item-cart";
 import FoodDetailsOrder from "@/components/restaurant/Food-item-order";
 
 const Order = () => {
+  const [totalPrice, setTotalPrice] = useState<string>("0");
+  const [deliveryPrice, setDeliveryPrice] = useState<string>("0");
+  const [subTotalPrice, setSubTotalPrice] = useState<string>("0");
   const navigation = useNavigation();
   useEffect(() => {
     navigation.setOptions({
@@ -30,14 +38,82 @@ const Order = () => {
         </View>
       ),
     });
-  }, [navigation]);
+    let subTotal = 0;
+    reduxFoodData.forEach((food) => (subTotal += Number(food.totalPrice)));
+    setSubTotalPrice(subTotal.toString());
+    let deliveryTotal = 0;
+    reduxFoodData.forEach(
+      (food) => (deliveryTotal += Number(food.totalDeliveryPrice))
+    );
+    setDeliveryPrice(deliveryTotal.toString());
+    setTotalPrice((deliveryTotal + subTotal).toString());
+  }, [navigation, reduxFoodData]);
   return (
     <SafeAreaView className="bg-white">
       <View className="h-full w-full flex flex-col px-4">
         <FlatList
+          // className="h-auto bg-blue-500"
           data={reduxFoodData}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => <FoodDetailsOrder foodItem={item} />}
+          ListFooterComponent={
+            <View>
+              <View className="flex flex-col space-y-2">
+                <View className="flex flex-row justify-between mt-3">
+                  <Text className="font-kadwa text-xl">Sub Total</Text>
+                  <Text className="font-kadwa-bold text-primary text-xl ">
+                    ${subTotalPrice}
+                  </Text>
+                </View>
+                <View className="flex flex-row justify-between mt-3">
+                  <Text className="font-kadwa text-xl">Delivery</Text>
+                  <Text className="font-kadwa-bold text-primary text-xl ">
+                    ${deliveryPrice}
+                  </Text>
+                </View>
+                <View className="flex flex-row justify-between mt-3">
+                  <Text className="font-kadwa text-xl">Total</Text>
+                  <Text className="font-kadwa-bold text-primary text-xl ">
+                    ${totalPrice}
+                  </Text>
+                </View>
+              </View>
+              <View className="">
+                {/* Add More Items */}
+                <Pressable className="flex flex-row justify-between items-center py-3 border-b border-gray-200">
+                  <Text className="text-lg text-green-700 font-semibold">
+                    Add More Items
+                  </Text>
+                  <Ionicons name="chevron-forward" size={24} color="green" />
+                </Pressable>
+
+                {/* Promo Code */}
+                <Pressable className="flex flex-row justify-between items-center py-3 border-b border-gray-200">
+                  <Text className="text-lg text-green-700 font-semibold">
+                    Promo Code
+                  </Text>
+                  <Ionicons name="chevron-forward" size={24} color="green" />
+                </Pressable>
+
+                {/* Payment Method */}
+                <Pressable className="flex flex-row justify-between items-center py-3">
+                  <Text className="text-lg text-green-700 font-semibold">
+                    Payment Method
+                  </Text>
+                  <Ionicons name="chevron-forward" size={24} color="green" />
+                </Pressable>
+              </View>
+              <TouchableOpacity
+                className="bg-primary  rounded-full items-center  py-5 px-8 my-6"
+                // onPress={handleSubmit}
+              >
+                <Text className="text-white font-adamina text-2xl ">
+                  SignUp Now
+                </Text>
+              </TouchableOpacity>
+            </View>
+          }
+          showsVerticalScrollIndicator={false}
         />
       </View>
     </SafeAreaView>
