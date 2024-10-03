@@ -108,7 +108,7 @@ const Order = () => {
                 // onPress={handleSubmit}
               >
                 <Text className="text-white font-adamina text-2xl ">
-                  SignUp Now
+                  CHECK OUT
                 </Text>
               </TouchableOpacity>
             </View>
