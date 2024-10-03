@@ -33,7 +33,7 @@ const Order = () => {
   }, [navigation]);
   return (
     <SafeAreaView className="bg-white">
-      <View className="h-full w-full flex flex-col px-6">
+      <View className="h-full w-full flex flex-col px-4">
         <FlatList
           data={reduxFoodData}
           keyExtractor={(item) => item.id.toString()}

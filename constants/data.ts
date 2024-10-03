@@ -768,4 +768,14 @@ export const reduxFoodData = [
     totalDeliveryPrice: "20",
     smallImage: images.veggie,
   },
+  {
+    id: 3,
+    name: "Strawberry Mojito",
+    typeOfCuisine: "JUICE",
+    timeOrdered: "1",
+    totalPrice: "00",
+    totalDeliveryPrice: "20",
+    smallImage: images.veggie,
+  },
+  
 ];
