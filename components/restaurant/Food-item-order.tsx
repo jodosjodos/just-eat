@@ -2,11 +2,12 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { FoodItem } from "@/types";
 import { Link } from "expo-router";
+import { foodItemOrder } from "@/types/restaurant";
 interface FoodITemProp {
-  foodItem: FoodItem;
+  foodItem: foodItemOrder;
 }
 //TODO:handle way to move food from cart to order page
-const FoodDetailsCart: React.FC<FoodITemProp> = ({ foodItem }) => {
+const FoodDetailsOrder: React.FC<FoodITemProp> = ({ foodItem }) => {
   const [showCounter, setShowCounter] = useState<boolean>(false);
   const [numberOfFood, setNumberOfFood] = useState<number>(1);
   const handleIncrement = () => {
@@ -27,12 +28,12 @@ const FoodDetailsCart: React.FC<FoodITemProp> = ({ foodItem }) => {
           {foodItem.name}
         </Link>
         <View className="flex flex-row  items-center space-x-4">
-          <Text className="  text-xl font-lekton">${foodItem.price}</Text>
-          <Text className="text-xl font-lekton">.{foodItem.deliveryPrice}</Text>
+          <Text className="  text-xl font-lekton">${foodItem.totalPrice}</Text>
+          <Text className="text-xl font-lekton">.{foodItem.totalDeliveryPrice}</Text>
         </View>
         <View className=" w-full flex flex-row items-center  justify-around">
           <Text className="font-adamina bg-primary text-white py-1 px-2 rounded-lg w-10">
-            {foodItem.rating}
+            {foodItem.totalPrice}
           </Text>
           {showCounter ? (
              <View className="flex flex-row items-center space-x-3">
@@ -66,4 +67,4 @@ const FoodDetailsCart: React.FC<FoodITemProp> = ({ foodItem }) => {
   );
 };
 
-export default FoodDetailsCart;
+export default FoodDetailsOrder;

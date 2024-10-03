@@ -1,3 +1,4 @@
+import { images } from "@/constants";
 import { ImageSourcePropType } from "react-native";
 
 export interface Restaurant {
@@ -24,4 +25,15 @@ export interface FoodItem {
   price: number;
   restaurant_id: number;
   category: string;
+}
+
+
+export interface foodItemOrder{
+  id:number
+  name:string
+  typeOfCuisine:string
+  timeOrdered:string
+  totalPrice:string
+  totalDeliveryPrice:string
+  smallImage:images.veggie
 }

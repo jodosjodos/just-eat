@@ -1,5 +1,5 @@
 import { userProps } from "@/types/user";
-import { images } from '@/constants';
+import { images } from "@/constants";
 
 export const user: userProps = {
   location: "",
@@ -746,5 +746,26 @@ export const restaurantFoods = [
     price: 200,
     restaurant_id: 8,
     category: "Coffee",
+  },
+];
+
+export const reduxFoodData = [
+  {
+    id: 1,
+    name: "Greek Gyro Grill",
+    typeOfCuisine: "Greek",
+    timeOrdered: "2",
+    totalPrice: "3000",
+    totalDeliveryPrice: "500",
+    smallImage: images.sweetAndSpicySmall,
+  },
+  {
+    id: 2,
+    name: "Strawberry Mojito",
+    typeOfCuisine: "JUICE",
+    timeOrdered: "1",
+    totalPrice: "00",
+    totalDeliveryPrice: "20",
+    smallImage: images.veggie,
   },
 ];

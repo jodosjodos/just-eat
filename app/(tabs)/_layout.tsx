@@ -85,7 +85,7 @@ const TabLayout = () => {
         name="order"
         options={{
           title: "order",
-          headerShown: false,
+          // headerShown: false,
           tabBarIcon: ({ color, focused }) => (
             <TabIcon
               color={color}
