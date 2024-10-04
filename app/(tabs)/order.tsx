@@ -14,7 +14,6 @@ import { useStoreSelectors } from "@/store/store";
 
 const Order = () => {
   const orders = useStoreSelectors.use.orders();
-console.log(orders);
   const [totalPrice, setTotalPrice] = useState<string>("0");
   const [deliveryPrice, setDeliveryPrice] = useState<string>("0");
   const [subTotalPrice, setSubTotalPrice] = useState<string>("0");

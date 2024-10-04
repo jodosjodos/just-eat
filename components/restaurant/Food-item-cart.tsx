@@ -12,7 +12,10 @@ const FoodDetailsCart: React.FC<FoodITemProp> = ({ foodItem, quantity }) => {
   const toast = useToast();
   const placeOrder = useStoreSelectors.use.placeOrder();
   const orderFood = () => {
-    const deliveryPrice = foodItem.deliveryPrice === "Free" ? 0 : parseFloat(foodItem.deliveryPrice);
+    const deliveryPrice =
+      foodItem.deliveryPrice === "Free"
+        ? 0
+        : parseFloat(foodItem.deliveryPrice);
     const orderDetails: Order = {
       id: foodItem.id,
       name: foodItem.name,
@@ -24,6 +27,9 @@ const FoodDetailsCart: React.FC<FoodITemProp> = ({ foodItem, quantity }) => {
     };
     placeOrder(orderDetails);
     removeFromCart(foodItem.id);
+    toast.show("order have been placed successfully", {
+      type: "success",
+    });
   };
   const removeFoodFromCart = () => {
     removeFromCart(foodItem.id);
@@ -69,9 +75,7 @@ const FoodDetailsCart: React.FC<FoodITemProp> = ({ foodItem, quantity }) => {
               remove
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            onPress={orderFood}
-          >
+          <TouchableOpacity onPress={orderFood}>
             <Text className="font-lekton-bold text-end text-xl text-primary underline">
               Order
             </Text>
