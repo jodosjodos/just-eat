@@ -11,8 +11,11 @@ import { router, useNavigation } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { reduxFoodData } from "@/constants/data";
 import FoodDetailsOrder from "@/components/restaurant/Food-item-order";
+import { useStoreSelectors } from "@/store/store";
 
 const Order = () => {
+  const orders = useStoreSelectors.use.orders();
+console.log(orders);
   const [totalPrice, setTotalPrice] = useState<string>("0");
   const [deliveryPrice, setDeliveryPrice] = useState<string>("0");
   const [subTotalPrice, setSubTotalPrice] = useState<string>("0");
@@ -39,21 +42,20 @@ const Order = () => {
       ),
     });
     let subTotal = 0;
-    reduxFoodData.forEach((food) => (subTotal += Number(food.totalPrice)));
+    orders.forEach((food) => (subTotal += parseFloat(food.totalPrice)));
     setSubTotalPrice(subTotal.toString());
+
     let deliveryTotal = 0;
-    reduxFoodData.forEach(
-      (food) => (deliveryTotal += Number(food.totalDeliveryPrice))
-    );
+    orders.forEach((food) => (deliveryTotal += parseFloat(food.totalDeliveryPrice)));
     setDeliveryPrice(deliveryTotal.toString());
     setTotalPrice((deliveryTotal + subTotal).toString());
-  }, [navigation, reduxFoodData]);
+  }, [navigation, orders]);
   return (
     <SafeAreaView className="bg-white">
       <View className="h-full w-full flex flex-col px-4">
         <FlatList
           // className="h-auto bg-blue-500"
-          data={reduxFoodData}
+          data={orders}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => <FoodDetailsOrder foodItem={item} />}
           ListFooterComponent={

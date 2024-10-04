@@ -9,7 +9,6 @@ import { useStoreSelectors } from "@/store/store";
 
 const Cart = () => {
   const cart = useStoreSelectors.use.cart();
-  console.log(cart);
   useEffect(() => {});
   return (
     <SafeAreaView className="bg-white">

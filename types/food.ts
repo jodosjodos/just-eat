@@ -1,3 +1,4 @@
+import { ImageSourcePropType } from "react-native";
 import { FoodItem } from "./restaurant";
 
 export type CartItem = {
@@ -8,11 +9,10 @@ export type Order = {
   id: number;
   name: string;
   typeOfCuisine: string;
-  timeOrdered: string;
-  totalPrice: number;
-  totalDeliveryPrice: number;
-  items: CartItem[];
-  smallImage: string;
+  timeOrdered: string; // assuming this is the order time as a string
+  totalPrice: string; // price as a string
+  totalDeliveryPrice: string; // delivery price as a string
+  smallImage: ImageSourcePropType;
 };
 export type StoreState = {
   cart: CartItem[];

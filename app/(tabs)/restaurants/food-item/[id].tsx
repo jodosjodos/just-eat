@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
-import { Link, useLocalSearchParams } from "expo-router";
+import { Link, router, useLocalSearchParams } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { restaurantFoods } from "@/constants/data";
 import { FoodItem } from "@/types";
@@ -40,7 +40,7 @@ const FoodItemPage = () => {
           source={foodItem?.coverImage}
         />
 
-        <TouchableOpacity className="absolute top-0 left-2" onPress={() => {}}>
+        <TouchableOpacity className="absolute top-0 left-2" onPress={() => { router.push("/(tabs)/restaurants/")}}>
           <AntDesign name="closecircleo" size={28} color="#024220" />
         </TouchableOpacity>
 

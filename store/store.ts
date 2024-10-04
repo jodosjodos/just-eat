@@ -2,7 +2,7 @@ import { Order, StoreState } from "@/types";
 import { create } from "zustand";
 import { createSelectors } from "./create-selectors";
 
-export const useStore = create<StoreState>((set) => ({
+const useStore = create<StoreState>((set) => ({
   cart: [],
   orders: [],
   addToCart: (item, quantity) =>
@@ -23,37 +23,20 @@ export const useStore = create<StoreState>((set) => ({
     }));
   },
   clearCart: () => set({ cart: [] }),
-  placeOrder: (orderDetails) =>
+  placeOrder: (orderDetails: Order) =>
     set((state) => {
-      // Extract the ids of the items being ordered
-      const orderedItemIds = orderDetails.items.map((item) => item.item.id);
-
-      // Filter out the ordered items from the cart
-      const orderedItems = state.cart.filter((cartItem) =>
-        orderedItemIds.includes(cartItem.item.id)
-      );
-
-      const totalOrderPrice = orderedItems.reduce(
-        (total, cartItem) => total + cartItem.item.price * cartItem.quantity,
-        0
-      );
-
-      const totalDeliveryPrice = totalOrderPrice > 2000 ? 0 : 500;
-
       const newOrder: Order = {
-        ...orderDetails,
-        totalPrice: totalOrderPrice,
-        totalDeliveryPrice,
-        items: orderedItems,
+        id: orderDetails.id,
+        name: orderDetails.name,
+        typeOfCuisine: orderDetails.typeOfCuisine, // FoodItem Category
+        timeOrdered: orderDetails.timeOrdered, // Set current time for the order
+        totalPrice: orderDetails.totalPrice, // String format of total price
+        totalDeliveryPrice: orderDetails.totalDeliveryPrice, // String format of delivery price
+        smallImage: orderDetails.smallImage, // Image reference for the order
       };
 
-      const remainingCartItems = state.cart.filter(
-        (cartItem) => !orderedItemIds.includes(cartItem.item.id)
-      );
-
       return {
-        orders: [...state.orders, newOrder],
-        cart: remainingCartItems, // Only remove the ordered items from the cart
+        orders: [...state.orders, newOrder], // Append new order to the orders list
       };
     }),
 }));
