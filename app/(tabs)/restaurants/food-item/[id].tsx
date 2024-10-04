@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
-import { Link, router, useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { restaurantFoods } from "@/constants/data";
 import { FoodItem } from "@/types";
@@ -10,10 +10,9 @@ import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { useToast } from "react-native-toast-notifications";
 import { useStoreSelectors } from "@/store/store";
 const FoodItemPage = () => {
-
   // states
-  const addToCart = useStoreSelectors.use.addToCart()
-  const [foodItem, setFoodItem] = useState<FoodItem >();
+  const addToCart = useStoreSelectors.use.addToCart();
+  const [foodItem, setFoodItem] = useState<FoodItem>();
   const [numberOfFood, setNumberOfFood] = useState<number>(1);
   const { id } = useLocalSearchParams();
   const toast = useToast();
@@ -22,14 +21,12 @@ const FoodItemPage = () => {
       (food) => food.id === Number(id)
     );
     setFoodItem(fetchedFoodItem);
-  },[id]);
+  }, [id]);
   const addToCartFn = () => {
-    
-    addToCart(foodItem!,numberOfFood)
+    addToCart(foodItem!, numberOfFood);
     toast.show(" food added to cart successfully", {
       type: "success",
     });
-    //TODO: add food  in cart page
   };
   return (
     <SafeAreaView className="bg-white h-full w-full" edges={["top", "bottom"]}>
@@ -40,7 +37,12 @@ const FoodItemPage = () => {
           source={foodItem?.coverImage}
         />
 
-        <TouchableOpacity className="absolute top-0 left-2" onPress={() => { router.push("/(tabs)/restaurants/")}}>
+        <TouchableOpacity
+          className="absolute top-0 left-2"
+          onPress={() => {
+            router.push("/(tabs)/restaurants/");
+          }}
+        >
           <AntDesign name="closecircleo" size={28} color="#024220" />
         </TouchableOpacity>
 

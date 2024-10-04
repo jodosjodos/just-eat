@@ -9,7 +9,6 @@ import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router, useNavigation } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { reduxFoodData } from "@/constants/data";
 import FoodDetailsOrder from "@/components/restaurant/Food-item-order";
 import { useStoreSelectors } from "@/store/store";
 
@@ -54,7 +53,6 @@ console.log(orders);
     <SafeAreaView className="bg-white">
       <View className="h-full w-full flex flex-col px-4">
         <FlatList
-          // className="h-auto bg-blue-500"
           data={orders}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => <FoodDetailsOrder foodItem={item} />}

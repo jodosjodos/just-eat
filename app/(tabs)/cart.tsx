@@ -1,7 +1,6 @@
-import { View, Text, FlatList } from "react-native";
-import React, { useEffect } from "react";
+import { View, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { restaurantFoods, user } from "@/constants/data";
+import {  user } from "@/constants/data";
 import UserProfile from "@/components/User-profile";
 import SearchComponent from "@/components/home/Search-component";
 import FoodDetailsCart from "@/components/restaurant/Food-item-cart";
@@ -9,7 +8,6 @@ import { useStoreSelectors } from "@/store/store";
 
 const Cart = () => {
   const cart = useStoreSelectors.use.cart();
-  useEffect(() => {});
   return (
     <SafeAreaView className="bg-white">
       <View className="h-full w-full flex flex-col">

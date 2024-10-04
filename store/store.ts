@@ -28,15 +28,15 @@ const useStore = create<StoreState>((set) => ({
       const newOrder: Order = {
         id: orderDetails.id,
         name: orderDetails.name,
-        typeOfCuisine: orderDetails.typeOfCuisine, // FoodItem Category
-        timeOrdered: orderDetails.timeOrdered, // Set current time for the order
-        totalPrice: orderDetails.totalPrice, // String format of total price
-        totalDeliveryPrice: orderDetails.totalDeliveryPrice, // String format of delivery price
-        smallImage: orderDetails.smallImage, // Image reference for the order
+        typeOfCuisine: orderDetails.typeOfCuisine,
+        timeOrdered: orderDetails.timeOrdered,
+        totalPrice: orderDetails.totalPrice,
+        totalDeliveryPrice: orderDetails.totalDeliveryPrice,
+        smallImage: orderDetails.smallImage, 
       };
 
       return {
-        orders: [...state.orders, newOrder], // Append new order to the orders list
+        orders: [...state.orders, newOrder],
       };
     }),
 }));

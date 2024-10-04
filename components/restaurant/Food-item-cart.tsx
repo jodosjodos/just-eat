@@ -1,5 +1,4 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
 import { FoodItem, Order } from "@/types";
 import { Link } from "expo-router";
 import { useStoreSelectors } from "@/store/store";
@@ -8,7 +7,6 @@ interface FoodITemProp {
   foodItem: FoodItem;
   quantity: number;
 }
-//TODO:handle way to move food from cart to order page
 const FoodDetailsCart: React.FC<FoodITemProp> = ({ foodItem, quantity }) => {
   const removeFromCart = useStoreSelectors.use.removeFromCart();
   const toast = useToast();
@@ -72,7 +70,6 @@ const FoodDetailsCart: React.FC<FoodITemProp> = ({ foodItem, quantity }) => {
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
-            // className="bg-secondary px-5 py-1 rounded-md  flex items-center justify-center"
             onPress={orderFood}
           >
             <Text className="font-lekton-bold text-end text-xl text-primary underline">
