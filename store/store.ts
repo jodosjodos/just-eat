@@ -1,5 +1,6 @@
 import { Order, StoreState } from "@/types";
 import { create } from "zustand";
+import { createSelectors } from "./create-selectors";
 
 export const useStore = create<StoreState>((set) => ({
   cart: [],
@@ -56,3 +57,5 @@ export const useStore = create<StoreState>((set) => ({
       };
     }),
 }));
+
+export const useStoreSelectors = createSelectors(useStore);

@@ -8,8 +8,12 @@ import { Image } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { useToast } from "react-native-toast-notifications";
+import { useStoreSelectors } from "@/store/store";
 const FoodItemPage = () => {
-  const [foodItem, setFoodItem] = useState<FoodItem | undefined>();
+
+  // states
+  const addToCart = useStoreSelectors.use.addToCart()
+  const [foodItem, setFoodItem] = useState<FoodItem >();
   const [numberOfFood, setNumberOfFood] = useState<number>(1);
   const { id } = useLocalSearchParams();
   const toast = useToast();
@@ -18,8 +22,10 @@ const FoodItemPage = () => {
       (food) => food.id === Number(id)
     );
     setFoodItem(fetchedFoodItem);
-  });
-  const addToCart = () => {
+  },[id]);
+  const addToCartFn = () => {
+    
+    addToCart(foodItem!,numberOfFood)
     toast.show(" food added to cart successfully", {
       type: "success",
     });
@@ -79,7 +85,7 @@ const FoodItemPage = () => {
         <View className="flex flex-row items-center justify-center space-x-6 border-y-8 py-3 border-secondary">
           <TouchableOpacity
             className="bg-primary  rounded-full items-center py-3 px-8"
-            onPress={addToCart}
+            onPress={addToCartFn}
           >
             <Text className="text-white font-adamina text-lg  text-center">
               Add to Cart

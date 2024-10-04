@@ -4,9 +4,10 @@ import { FoodItem } from "@/types";
 import { Link } from "expo-router";
 interface FoodITemProp {
   foodItem: FoodItem;
+  quantity: number;
 }
 //TODO:handle way to move food from cart to order page
-const FoodDetailsCart: React.FC<FoodITemProp> = ({ foodItem }) => {
+const FoodDetailsCart: React.FC<FoodITemProp> = ({ foodItem, quantity }) => {
   const orderFood = () => {};
   return (
     <View className="flex flex-row  hover:cursor-pointer px-6 space-x-2 py-3 border-b border-secondary w-full">
@@ -29,7 +30,9 @@ const FoodDetailsCart: React.FC<FoodITemProp> = ({ foodItem }) => {
               .{foodItem.deliveryPrice}
             </Text>
           </View>
-          <Text className="font-lekton-bold text-xl text-primary">x3 </Text>
+          <Text className="font-lekton-bold text-xl text-primary">
+            x{quantity}{" "}
+          </Text>
         </View>
         <View className="flex flex-row items-center  space-x-12 w-full ">
           <Text className="font-adamina bg-primary text-white py-1 px-2 rounded-lg w-10">
@@ -40,13 +43,17 @@ const FoodDetailsCart: React.FC<FoodITemProp> = ({ foodItem }) => {
             className=""
             onPress={orderFood}
           >
-            <Text className="font-lekton text-end text-xl text-red-400 underline">remove</Text>
+            <Text className="font-lekton text-end text-xl text-red-400 underline">
+              remove
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity
             // className="bg-secondary px-5 py-1 rounded-md  flex items-center justify-center"
             onPress={orderFood}
           >
-            <Text className="font-lekton-bold text-end text-xl text-primary underline">Order</Text>
+            <Text className="font-lekton-bold text-end text-xl text-primary underline">
+              Order
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
