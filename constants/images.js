@@ -24,6 +24,8 @@ import tripleChocolateSmall from "../assets/images/Triple Chocolate BrownieSmall
 import veggie from "../assets/images/Veggie Delight SandwichSmall.jpg";
 import cart from "../assets/images/cart.jpeg";
 import noOrder from "../assets/images/noOrder.jpeg";
+import checked from "../assets/images/checked.png";
+import unChecked from "../assets/images/unchecked.png";
 export {
   logo,
   logoX,
@@ -51,4 +53,6 @@ export {
   veggie,
   cart,
   noOrder,
+  checked,
+  unChecked,
 };
