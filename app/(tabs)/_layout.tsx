@@ -1,10 +1,8 @@
 import { View, Text, StatusBar } from "react-native";
 import React from "react";
 import { Tabs } from "expo-router";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Entypo from "@expo/vector-icons/Entypo";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Feather from "@expo/vector-icons/Feather";
 import Ionicons from "@expo/vector-icons/Ionicons";
 const TabIcon = ({
@@ -85,7 +83,6 @@ const TabLayout = () => {
         name="order"
         options={{
           title: "order",
-          // headerShown: false,
           tabBarIcon: ({ color, focused }) => (
             <TabIcon
               color={color}

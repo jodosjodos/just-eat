@@ -1,7 +1,4 @@
-import { View, Text, Image, StyleSheet, Button } from "react-native";
-import React, { useState } from "react";
-import { Link, router, Stack, useLocalSearchParams } from "expo-router";
-import AntDesign from "@expo/vector-icons/AntDesign";
+import { Stack } from "expo-router";
 
 const RestaurantLayout = () => {
   return (
