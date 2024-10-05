@@ -64,7 +64,7 @@ const Order = () => {
           renderItem={({ item }) => <FoodDetailsOrder foodItem={item} />}
           ListEmptyComponent={<EmptyOrder />}
           ListFooterComponent={
-            orders.length ==0 ? (
+            orders.length == 0 ? (
               <View></View>
             ) : (
               <View>
@@ -90,7 +90,10 @@ const Order = () => {
                 </View>
                 <View className="">
                   {/* Add More Items */}
-                  <Pressable className="flex flex-row justify-between items-center py-3 border-b border-gray-200">
+                  <Pressable
+                    className="flex flex-row justify-between items-center py-3 border-b border-gray-200"
+                    onPress={() => router.push("/(tabs)/restaurants")}
+                  >
                     <Text className="text-lg text-green-700 font-semibold">
                       Add More Items
                     </Text>
