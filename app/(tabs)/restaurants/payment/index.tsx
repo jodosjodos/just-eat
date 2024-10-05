@@ -13,10 +13,16 @@ import { router, useLocalSearchParams, useNavigation } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { styles } from "@/constants/styles";
 import { images } from "@/constants";
-// TODO: handle state then continue to next order status
+import { useToast } from "react-native-toast-notifications";
 const PaymentPage = () => {
   const navigation = useNavigation();
+  const toast = useToast();
   const [paymentMethod, setPaymentMethod] = useState("cash");
+  const [cardNumber, setCardNumber] = useState<string>("");
+  const [expireDate, setExpireDate] = useState<string>("");
+  const [cardHoler, setCardHolder] = useState<string>("");
+  const [securityCode, setSecurityCode] = useState<string>("");
+
   const { totalPrice, subTotalPrice, deliveryPrice } = useLocalSearchParams();
   useEffect(() => {
     navigation.setOptions({
@@ -39,11 +45,24 @@ const PaymentPage = () => {
         </View>
       ),
     });
-  }, []);
+  }, [navigation]);
+  const handlePayment = () => {
+    if (
+      (!cardNumber || !expireDate || !cardHoler || !securityCode) &&
+      paymentMethod === "online"
+    ) {
+      toast.show("all fields are required", {
+        type: "danger",
+      });
+      //TODO: add return here 
+    }
+    toast.show(" successfully ordered", {
+      type: "success",
+    });
+  };
   return (
     <SafeAreaView className="bg-white">
       <ScrollView className=" w-full h-full flex flex-col space-y-5">
-     
         <View className="flex flex-col space-y-3">
           <View className="flex flex-row items-center px-3">
             <Image
@@ -114,6 +133,8 @@ const PaymentPage = () => {
                 placeholder="Card number"
                 style={styles.shadowCustom}
                 keyboardType="number-pad"
+                value={cardNumber}
+                onChangeText={setCardNumber}
               />
             </View>
             <View className="relative">
@@ -122,6 +143,8 @@ const PaymentPage = () => {
                 placeholder="Expiry date"
                 style={styles.shadowCustom}
                 keyboardType="number-pad"
+                value={expireDate}
+                onChangeText={setExpireDate}
               />
               <Text className="absolute bottom-0 right-0 font-lekton text-lg mr-2">
                 MM/YY
@@ -133,6 +156,8 @@ const PaymentPage = () => {
                 placeholder="Card holder"
                 style={styles.shadowCustom}
                 keyboardType="name-phone-pad"
+                value={cardHoler}
+                onChangeText={setCardHolder}
               />
             </View>
             <View className="relative">
@@ -141,6 +166,8 @@ const PaymentPage = () => {
                 placeholder="Security code"
                 style={styles.shadowCustom}
                 keyboardType="number-pad"
+                value={securityCode}
+                onChangeText={setSecurityCode}
               />
               <Text className="absolute bottom-0 right-0 font-lekton text-lg mr-2">
                 CVC/CCV
@@ -148,7 +175,10 @@ const PaymentPage = () => {
             </View>
           </View>
         )}
-        <TouchableOpacity className="bg-primary  rounded-full items-center  py-4 px-5 mx-3 mb-8">
+        <TouchableOpacity
+          className="bg-primary  rounded-full items-center  py-4 px-5 mx-3 mb-8"
+          onPress={handlePayment}
+        >
           <Text className="text-white font-adamina text-2xl ">DONE</Text>
         </TouchableOpacity>
       </ScrollView>
