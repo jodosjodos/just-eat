@@ -35,7 +35,7 @@ const PaymentPage = () => {
             />
           </Pressable>
           <Text className="text-primary font-lekton-bold text-2xl mt-2">
-            Payment Method
+            Payment Type
           </Text>
         </View>
       ),
