@@ -11,12 +11,14 @@ import { router, useNavigation } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import FoodDetailsOrder from "@/components/restaurant/Food-item-order";
 import { useStoreSelectors } from "@/store/store";
+import EmptyOrder from "@/components/Empty-order";
 
 const Order = () => {
   const orders = useStoreSelectors.use.orders();
   const [totalPrice, setTotalPrice] = useState<string>("0");
   const [deliveryPrice, setDeliveryPrice] = useState<string>("0");
   const [subTotalPrice, setSubTotalPrice] = useState<string>("0");
+  const [isOrderEmpty, setIsOrderEmpty] = useState<boolean>(false);
   const navigation = useNavigation();
   useEffect(() => {
     navigation.setOptions({
@@ -39,12 +41,17 @@ const Order = () => {
         </View>
       ),
     });
+    if (orders.length == 0) {
+      setIsOrderEmpty(true);
+    }
     let subTotal = 0;
     orders.forEach((food) => (subTotal += parseFloat(food.totalPrice)));
     setSubTotalPrice(subTotal.toString());
 
     let deliveryTotal = 0;
-    orders.forEach((food) => (deliveryTotal += parseFloat(food.totalDeliveryPrice)));
+    orders.forEach(
+      (food) => (deliveryTotal += parseFloat(food.totalDeliveryPrice))
+    );
     setDeliveryPrice(deliveryTotal.toString());
     setTotalPrice((deliveryTotal + subTotal).toString());
   }, [navigation, orders]);
@@ -55,62 +62,67 @@ const Order = () => {
           data={orders}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => <FoodDetailsOrder foodItem={item} />}
+          ListEmptyComponent={<EmptyOrder />}
           ListFooterComponent={
-            <View>
-              <View className="flex flex-col space-y-2">
-                <View className="flex flex-row justify-between mt-3">
-                  <Text className="font-kadwa text-xl">Sub Total</Text>
-                  <Text className="font-kadwa-bold text-primary text-xl ">
-                    ${subTotalPrice}
-                  </Text>
+            orders.length ==0 ? (
+              <View></View>
+            ) : (
+              <View>
+                <View className="flex flex-col space-y-2">
+                  <View className="flex flex-row justify-between mt-3">
+                    <Text className="font-kadwa text-xl">Sub Total</Text>
+                    <Text className="font-kadwa-bold text-primary text-xl ">
+                      ${subTotalPrice}
+                    </Text>
+                  </View>
+                  <View className="flex flex-row justify-between mt-3">
+                    <Text className="font-kadwa text-xl">Delivery</Text>
+                    <Text className="font-kadwa-bold text-primary text-xl ">
+                      ${deliveryPrice}
+                    </Text>
+                  </View>
+                  <View className="flex flex-row justify-between mt-3">
+                    <Text className="font-kadwa text-xl">Total</Text>
+                    <Text className="font-kadwa-bold text-primary text-xl ">
+                      ${totalPrice}
+                    </Text>
+                  </View>
                 </View>
-                <View className="flex flex-row justify-between mt-3">
-                  <Text className="font-kadwa text-xl">Delivery</Text>
-                  <Text className="font-kadwa-bold text-primary text-xl ">
-                    ${deliveryPrice}
-                  </Text>
-                </View>
-                <View className="flex flex-row justify-between mt-3">
-                  <Text className="font-kadwa text-xl">Total</Text>
-                  <Text className="font-kadwa-bold text-primary text-xl ">
-                    ${totalPrice}
-                  </Text>
-                </View>
-              </View>
-              <View className="">
-                {/* Add More Items */}
-                <Pressable className="flex flex-row justify-between items-center py-3 border-b border-gray-200">
-                  <Text className="text-lg text-green-700 font-semibold">
-                    Add More Items
-                  </Text>
-                  <Ionicons name="chevron-forward" size={24} color="green" />
-                </Pressable>
+                <View className="">
+                  {/* Add More Items */}
+                  <Pressable className="flex flex-row justify-between items-center py-3 border-b border-gray-200">
+                    <Text className="text-lg text-green-700 font-semibold">
+                      Add More Items
+                    </Text>
+                    <Ionicons name="chevron-forward" size={24} color="green" />
+                  </Pressable>
 
-                {/* Promo Code */}
-                <Pressable className="flex flex-row justify-between items-center py-3 border-b border-gray-200">
-                  <Text className="text-lg text-green-700 font-semibold">
-                    Promo Code
-                  </Text>
-                  <Ionicons name="chevron-forward" size={24} color="green" />
-                </Pressable>
+                  {/* Promo Code */}
+                  <Pressable className="flex flex-row justify-between items-center py-3 border-b border-gray-200">
+                    <Text className="text-lg text-green-700 font-semibold">
+                      Promo Code
+                    </Text>
+                    <Ionicons name="chevron-forward" size={24} color="green" />
+                  </Pressable>
 
-                {/* Payment Method */}
-                <Pressable className="flex flex-row justify-between items-center py-3">
-                  <Text className="text-lg text-green-700 font-semibold">
-                    Payment Method
+                  {/* Payment Method */}
+                  <Pressable className="flex flex-row justify-between items-center py-3">
+                    <Text className="text-lg text-green-700 font-semibold">
+                      Payment Method
+                    </Text>
+                    <Ionicons name="chevron-forward" size={24} color="green" />
+                  </Pressable>
+                </View>
+                <TouchableOpacity
+                  className="bg-primary  rounded-full items-center  py-5 px-8 my-6"
+                  // onPress={handleSubmit}
+                >
+                  <Text className="text-white font-adamina text-2xl ">
+                    CHECK OUT
                   </Text>
-                  <Ionicons name="chevron-forward" size={24} color="green" />
-                </Pressable>
+                </TouchableOpacity>
               </View>
-              <TouchableOpacity
-                className="bg-primary  rounded-full items-center  py-5 px-8 my-6"
-                // onPress={handleSubmit}
-              >
-                <Text className="text-white font-adamina text-2xl ">
-                  CHECK OUT
-                </Text>
-              </TouchableOpacity>
-            </View>
+            )
           }
           showsVerticalScrollIndicator={false}
         />
