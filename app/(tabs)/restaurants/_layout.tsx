@@ -27,6 +27,12 @@ const RestaurantLayout = () => {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="order-status"
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack>
   );
 };

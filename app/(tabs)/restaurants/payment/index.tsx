@@ -14,9 +14,11 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { styles } from "@/constants/styles";
 import { images } from "@/constants";
 import { useToast } from "react-native-toast-notifications";
+import { useOrderStatusSelector } from "@/store";
 const PaymentPage = () => {
   const navigation = useNavigation();
   const toast = useToast();
+  const orderStatus = useOrderStatusSelector.use.orderStatus();
   const [paymentMethod, setPaymentMethod] = useState("cash");
   const [cardNumber, setCardNumber] = useState<string>("");
   const [expireDate, setExpireDate] = useState<string>("");
@@ -26,6 +28,7 @@ const PaymentPage = () => {
   const { totalPrice, subTotalPrice, deliveryPrice } = useLocalSearchParams();
   useEffect(() => {
     navigation.setOptions({
+      headerBackVisible:false,
       title: "",
       headerStyle: {
         backgroundColor: "#D6FFD9",
@@ -54,11 +57,12 @@ const PaymentPage = () => {
       toast.show("all fields are required", {
         type: "danger",
       });
-      //TODO: add return here 
+      //TODO: add return here
     }
     toast.show(" successfully ordered", {
       type: "success",
     });
+    router.push(`/(tabs)/restaurants/order-status/${orderStatus}`)
   };
   return (
     <SafeAreaView className="bg-white">
