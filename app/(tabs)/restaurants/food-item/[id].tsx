@@ -8,7 +8,7 @@ import { Image } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { useToast } from "react-native-toast-notifications";
-import { useStoreSelectors } from "@/store/store";
+import { useStoreSelectors } from "@/store";
 const FoodItemPage = () => {
   // states
   const addToCart = useStoreSelectors.use.addToCart();

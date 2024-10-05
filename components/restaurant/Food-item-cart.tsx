@@ -1,7 +1,7 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { FoodItem, Order } from "@/types";
 import { Link } from "expo-router";
-import { useStoreSelectors } from "@/store/store";
+import { useStoreSelectors } from "@/store";
 import { useToast } from "react-native-toast-notifications";
 interface FoodITemProp {
   foodItem: FoodItem;

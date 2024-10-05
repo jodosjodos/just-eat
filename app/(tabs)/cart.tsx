@@ -1,10 +1,10 @@
 import { View, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import {  user } from "@/constants/data";
+import { user } from "@/constants/data";
 import UserProfile from "@/components/User-profile";
 import SearchComponent from "@/components/home/Search-component";
 import FoodDetailsCart from "@/components/restaurant/Food-item-cart";
-import { useStoreSelectors } from "@/store/store";
+import { useStoreSelectors } from "@/store";
 import EmptyCart from "@/components/Empty-cart";
 //TODO: handle clear cart , handle empty cart , handle empty order  list
 const Cart = () => {
@@ -15,14 +15,16 @@ const Cart = () => {
         <FlatList
           data={cart}
           keyExtractor={(res) => res.item.id.toString()}
-          renderItem={({ item }) => <FoodDetailsCart foodItem={item.item}quantity={item.quantity} />}
+          renderItem={({ item }) => (
+            <FoodDetailsCart foodItem={item.item} quantity={item.quantity} />
+          )}
           ListHeaderComponent={
             <View className="py-5">
               <UserProfile name={user.name} profile={user.profile} />
               <SearchComponent />
             </View>
           }
-          ListEmptyComponent={<EmptyCart/>}
+          ListEmptyComponent={<EmptyCart />}
         />
       </View>
     </SafeAreaView>

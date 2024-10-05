@@ -10,7 +10,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { router, useNavigation } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import FoodDetailsOrder from "@/components/restaurant/Food-item-order";
-import { useStoreSelectors } from "@/store/store";
+import { useStoreSelectors } from "@/store";
 import EmptyOrder from "@/components/Empty-order";
 
 const Order = () => {
@@ -114,7 +114,12 @@ const Order = () => {
                 </View>
                 <TouchableOpacity
                   className="bg-primary  rounded-full items-center  py-5 px-8 my-6"
-                  onPress={() => router.push({pathname:"/(tabs)/restaurants/payment/",params:{subTotalPrice,totalPrice,deliveryPrice}})}
+                  onPress={() =>
+                    router.push({
+                      pathname: "/(tabs)/restaurants/payment/",
+                      params: { subTotalPrice, totalPrice, deliveryPrice },
+                    })
+                  }
                 >
                   <Text className="text-white font-adamina text-2xl ">
                     CHECK OUT
