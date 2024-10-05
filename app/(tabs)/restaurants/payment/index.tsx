@@ -6,6 +6,7 @@ import {
   Image,
   TextInput,
   StyleSheet,
+  TouchableOpacity,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -102,6 +103,51 @@ const PaymentPage = () => {
             </Text>
           </View>
         </View>
+        {paymentMethod === "online" && (
+          <View className="flex flex-col gap-y-3 px-5">
+            <View>
+              <TextInput
+                className="flex-1 p-3 rounded-md text-xl font-lekton text-black  bg-secondary"
+                placeholder="Card number"
+                style={styles.shadowCustom}
+                keyboardType="number-pad"
+              />
+            </View>
+            <View className="relative">
+              <TextInput
+                className="flex-1 p-3 rounded-md text-xl font-lekton text-black  bg-secondary"
+                placeholder="Expiry date"
+                style={styles.shadowCustom}
+                keyboardType="number-pad"
+              />
+              <Text className="absolute bottom-0 right-0 font-lekton text-lg mr-2">
+                MM/YY
+              </Text>
+            </View>
+            <View className="relative">
+              <TextInput
+                className="flex-1 p-3 rounded-md text-xl font-lekton text-black  bg-secondary"
+                placeholder="Card holder"
+                style={styles.shadowCustom}
+                keyboardType="name-phone-pad"
+              />
+            </View>
+            <View className="relative">
+              <TextInput
+                className="flex-1 p-3 rounded-md text-xl font-lekton text-black  bg-secondary"
+                placeholder="Security code"
+                style={styles.shadowCustom}
+                keyboardType="number-pad"
+              />
+              <Text className="absolute bottom-0 right-0 font-lekton text-lg mr-2">
+                CVC/CCV
+              </Text>
+            </View>
+          </View>
+        )}
+        <TouchableOpacity className="bg-primary  rounded-full items-center  py-5 px-5 mx-3">
+          <Text className="text-white font-adamina text-2xl ">DONE</Text>
+        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );
