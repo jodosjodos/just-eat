@@ -13,7 +13,7 @@ import { router, useLocalSearchParams, useNavigation } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { styles } from "@/constants/styles";
 import { images } from "@/constants";
-
+// TODO: handle state then continue to next order status
 const PaymentPage = () => {
   const navigation = useNavigation();
   const [paymentMethod, setPaymentMethod] = useState("cash");
