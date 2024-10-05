@@ -40,7 +40,7 @@ const FoodItemPage = () => {
         <TouchableOpacity
           className="absolute top-0 left-2"
           onPress={() => {
-            router.push("/(tabs)/restaurants/");
+            router.back();
           }}
         >
           <AntDesign name="closecircleo" size={28} color="#024220" />
