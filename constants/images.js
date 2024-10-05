@@ -22,6 +22,7 @@ import sweetAndSpicySmall from "../assets/images/Sweet And Spicy PastrySmall.jpg
 import tripleChocolate from "../assets/images/Triple Chocolate Brownie.jpg"
 import tripleChocolateSmall from "../assets/images/Triple Chocolate BrownieSmall.jpg"
 import veggie from "../assets/images/Veggie Delight SandwichSmall.jpg"
+import cart from "../assets/images/cart.jpeg"
 export {
   logo,
   logoX,
@@ -47,4 +48,5 @@ export {
   tripleChocolate,
   tripleChocolateSmall,
   veggie,
+  cart
 };

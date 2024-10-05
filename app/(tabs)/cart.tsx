@@ -5,6 +5,7 @@ import UserProfile from "@/components/User-profile";
 import SearchComponent from "@/components/home/Search-component";
 import FoodDetailsCart from "@/components/restaurant/Food-item-cart";
 import { useStoreSelectors } from "@/store/store";
+import EmptyCart from "@/components/Empty-cart";
 //TODO: handle clear cart , handle empty cart , handle empty order  list
 const Cart = () => {
   const cart = useStoreSelectors.use.cart();
@@ -21,6 +22,7 @@ const Cart = () => {
               <SearchComponent />
             </View>
           }
+          ListEmptyComponent={<EmptyCart/>}
         />
       </View>
     </SafeAreaView>
