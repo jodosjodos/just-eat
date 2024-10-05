@@ -1,4 +1,12 @@
-import { View, Text, ScrollView, Pressable, Image } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  Pressable,
+  Image,
+  TextInput,
+  StyleSheet,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router, useLocalSearchParams, useNavigation } from "expo-router";
@@ -9,7 +17,7 @@ import { images } from "@/constants";
 const PaymentPage = () => {
   const navigation = useNavigation();
   const [paymentMethod, setPaymentMethod] = useState("cash");
-  const {totalPrice, subTotalPrice, deliveryPrice} = useLocalSearchParams()
+  const { totalPrice, subTotalPrice, deliveryPrice } = useLocalSearchParams();
   useEffect(() => {
     navigation.setOptions({
       title: "",
@@ -74,7 +82,7 @@ const PaymentPage = () => {
             </Pressable>
           </View>
         </View>
-        <View className="flex flex-col space-y-2">
+        <View className="flex flex-col space-y-2 px-12">
           <View className="flex flex-row justify-between mt-3">
             <Text className="font-kadwa text-xl">Sub Total</Text>
             <Text className="font-kadwa-bold text-primary text-xl ">
