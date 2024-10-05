@@ -1,13 +1,7 @@
-import {
-  View,
-  Text,
-  ScrollView,
-  Pressable,
-  Image,
-} from "react-native";
+import { View, Text, ScrollView, Pressable, Image } from "react-native";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { router, useNavigation } from "expo-router";
+import { router, useLocalSearchParams, useNavigation } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { styles } from "@/constants/styles";
 import { images } from "@/constants";
@@ -15,6 +9,7 @@ import { images } from "@/constants";
 const PaymentPage = () => {
   const navigation = useNavigation();
   const [paymentMethod, setPaymentMethod] = useState("cash");
+  const {totalPrice, subTotalPrice, deliveryPrice} = useLocalSearchParams()
   useEffect(() => {
     navigation.setOptions({
       title: "",
@@ -45,8 +40,9 @@ const PaymentPage = () => {
             source={
               paymentMethod === "cash" ? images.checked : images.unChecked
             }
-            className={` absolute z-50  ${paymentMethod==="cash" ?"top-2":"top3"} left-5 w-8 h-8`}
-         
+            className={` absolute z-50  ${
+              paymentMethod === "cash" ? "top-2" : "top3"
+            } left-5 w-8 h-8`}
             resizeMode="cover"
           />
           <View
@@ -64,7 +60,9 @@ const PaymentPage = () => {
             source={
               paymentMethod === "online" ? images.checked : images.unChecked
             }
-            className={` absolute z-50  ${paymentMethod==="online" ?"top-2":"top3"} left-5 w-8 h-8`}
+            className={` absolute z-50  ${
+              paymentMethod === "online" ? "top-2" : "top3"
+            } left-5 w-8 h-8`}
             resizeMode="cover"
           />
           <View
@@ -76,11 +74,26 @@ const PaymentPage = () => {
             </Pressable>
           </View>
         </View>
-        <Text>mee</Text>
-        <Text>mee</Text>
-        <Text>mee</Text>
-        <Text>mee</Text>
-        <Text>mee</Text>
+        <View className="flex flex-col space-y-2">
+          <View className="flex flex-row justify-between mt-3">
+            <Text className="font-kadwa text-xl">Sub Total</Text>
+            <Text className="font-kadwa-bold text-primary text-xl ">
+              ${subTotalPrice}
+            </Text>
+          </View>
+          <View className="flex flex-row justify-between mt-3">
+            <Text className="font-kadwa text-xl">Delivery</Text>
+            <Text className="font-kadwa-bold text-primary text-xl ">
+              ${deliveryPrice}
+            </Text>
+          </View>
+          <View className="flex flex-row justify-between mt-3">
+            <Text className="font-kadwa text-xl">Total</Text>
+            <Text className="font-kadwa-bold text-primary text-xl ">
+              ${totalPrice}
+            </Text>
+          </View>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

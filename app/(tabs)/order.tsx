@@ -114,7 +114,7 @@ const Order = () => {
                 </View>
                 <TouchableOpacity
                   className="bg-primary  rounded-full items-center  py-5 px-8 my-6"
-                  onPress={() => router.push("/(tabs)/restaurants/payment/")}
+                  onPress={() => router.push({pathname:"/(tabs)/restaurants/payment/",params:{subTotalPrice,totalPrice,deliveryPrice}})}
                 >
                   <Text className="text-white font-adamina text-2xl ">
                     CHECK OUT
