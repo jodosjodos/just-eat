@@ -3,17 +3,13 @@ import {
   Text,
   ScrollView,
   Pressable,
-  TouchableOpacity,
-  TextInput,
   Image,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router, useNavigation } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import Feather from "@expo/vector-icons/Feather";
 import { styles } from "@/constants/styles";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { images } from "@/constants";
 
 const PaymentPage = () => {
