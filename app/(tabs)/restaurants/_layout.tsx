@@ -24,6 +24,12 @@ const RestaurantLayout = () => {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="payment"
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack>
   );
 };

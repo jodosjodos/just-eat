@@ -18,7 +18,6 @@ const Order = () => {
   const [totalPrice, setTotalPrice] = useState<string>("0");
   const [deliveryPrice, setDeliveryPrice] = useState<string>("0");
   const [subTotalPrice, setSubTotalPrice] = useState<string>("0");
-  const [isOrderEmpty, setIsOrderEmpty] = useState<boolean>(false);
   const navigation = useNavigation();
   useEffect(() => {
     navigation.setOptions({
@@ -41,9 +40,6 @@ const Order = () => {
         </View>
       ),
     });
-    if (orders.length == 0) {
-      setIsOrderEmpty(true);
-    }
     let subTotal = 0;
     orders.forEach((food) => (subTotal += parseFloat(food.totalPrice)));
     setSubTotalPrice(subTotal.toString());
@@ -118,7 +114,7 @@ const Order = () => {
                 </View>
                 <TouchableOpacity
                   className="bg-primary  rounded-full items-center  py-5 px-8 my-6"
-                  // onPress={handleSubmit}
+                  onPress={() => router.push("/(tabs)/restaurants/payment/")}
                 >
                   <Text className="text-white font-adamina text-2xl ">
                     CHECK OUT
