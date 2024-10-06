@@ -56,7 +56,7 @@ const renderStepIndicator = ({
 
 const OrderStatusPage = () => {
   const navigation = useNavigation();
-  const [currentStep, setCurrentStep] = useState<number>(1);
+  const [currentStep, setCurrentStep] = useState<number>(0);
   console.log(currentStep);
 
   useEffect(() => {
@@ -91,12 +91,12 @@ const OrderStatusPage = () => {
   return (
     <SafeAreaView className="bg-white">
       <View className="h-full w-full flex flex-col px-12 space-y-12">
-        {currentStep == 2 && (
+        {currentStep == 1 && (
           <View className="w-full">
             <Image source={images.prepareOrder} resizeMode="contain" />
           </View>
         )}
-        {currentStep === 4 && (
+        {currentStep === 3 && (
           <View className="">
             <Image source={images.OrderDriver} resizeMode="contain" />
           </View>
@@ -112,17 +112,16 @@ const OrderStatusPage = () => {
             renderStepIndicator={renderStepIndicator} // Attach the custom function
           />
         </View>
-        {currentStep == 1 && (
-          <View>
-            <Text>driver</Text>
+        {currentStep === 0 && (
+          <View className="flex flex-row justify-center">
+            <Image source={images.driver} resizeMode="contain" />
           </View>
         )}
-        {currentStep === 3 && (
+        {currentStep === 2 && (
           <View>
             <Image source={images.readyOrder} />
           </View>
         )}
-        
       </View>
     </SafeAreaView>
   );

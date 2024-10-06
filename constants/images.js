@@ -29,6 +29,7 @@ import unChecked from "../assets/images/unchecked.png";
 import prepareOrder from "../assets/images/prepareOrder.png";
 import readyOrder from "../assets/images/readyOrder.png";
 import OrderDriver from "../assets/images/orderDriver.png";
+import driver from "../assets/images/driver.png";
 export {
   logo,
   logoX,
@@ -60,5 +61,6 @@ export {
   unChecked,
   prepareOrder,
   readyOrder,
-  OrderDriver
+  OrderDriver,
+  driver
 };
