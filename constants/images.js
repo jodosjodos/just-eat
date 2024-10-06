@@ -26,6 +26,9 @@ import cart from "../assets/images/cart.jpeg";
 import noOrder from "../assets/images/noOrder.jpeg";
 import checked from "../assets/images/checked.png";
 import unChecked from "../assets/images/unchecked.png";
+import prepareOrder from "../assets/images/prepareOrder.png";
+import readyOrder from "../assets/images/readyOrder.png";
+import OrderDriver from "../assets/images/orderDriver.png";
 export {
   logo,
   logoX,
@@ -55,4 +58,7 @@ export {
   noOrder,
   checked,
   unChecked,
+  prepareOrder,
+  readyOrder,
+  OrderDriver
 };

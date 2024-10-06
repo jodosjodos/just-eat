@@ -4,6 +4,8 @@ import { router, useNavigation } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import StepIndicator from "react-native-step-indicator";
+import { Image } from "react-native";
+import { images } from "@/constants";
 const labels = [
   "Your order is accepted",
   "Preparing your order",
@@ -33,7 +35,13 @@ const customStyles = {
   labelSize: 20,
   currentStepLabelColor: "#024220",
 };
-const renderStepIndicator = ({ position, stepStatus }: { position: number, stepStatus: string }) => {
+const renderStepIndicator = ({
+  position,
+  stepStatus,
+}: {
+  position: number;
+  stepStatus: string;
+}) => {
   switch (stepStatus) {
     case "current":
       return <Ionicons name="ellipse" size={24} color="#024220" />;
@@ -50,7 +58,7 @@ const OrderStatusPage = () => {
   const navigation = useNavigation();
   const [currentStep, setCurrentStep] = useState<number>(1);
   console.log(currentStep);
-  
+
   useEffect(() => {
     navigation.setOptions({
       headerBackVisible: false,
@@ -82,7 +90,17 @@ const OrderStatusPage = () => {
   };
   return (
     <SafeAreaView className="bg-white">
-      <View className="h-full w-full">
+      <View className="h-full w-full flex flex-col px-12 space-y-12">
+        {currentStep == 2 && (
+          <View className="w-full">
+            <Image source={images.prepareOrder} resizeMode="contain" />
+          </View>
+        )}
+        {currentStep === 4 && (
+          <View className="">
+            <Image source={images.OrderDriver} resizeMode="contain" />
+          </View>
+        )}
         <View className="h-[50%]">
           <StepIndicator
             customStyles={customStyles}
@@ -94,11 +112,17 @@ const OrderStatusPage = () => {
             renderStepIndicator={renderStepIndicator} // Attach the custom function
           />
         </View>
-        {currentStep == 0 && (
+        {currentStep == 1 && (
           <View>
             <Text>driver</Text>
           </View>
         )}
+        {currentStep === 3 && (
+          <View>
+            <Image source={images.readyOrder} />
+          </View>
+        )}
+        
       </View>
     </SafeAreaView>
   );
