@@ -3,10 +3,10 @@ import { create } from "zustand";
 import { createSelectors } from "./create-selectors";
 
 // Define the possible order statuses
-const orderStatuses = ["accepted", "preparing","ready","on-the-way", "delivered"];
+const orderStatuses = ["accepted", "preparing", "ready", "on-the-way", "delivered"];
 
 const orderStore = create<orderStatusStoreType>((set) => ({
-  orderStatus: orderStatuses[0], // Default to "pending"
+  orderStatus: orderStatuses[0], // Default to the first status
   setOrderStatus: (status) => set({ orderStatus: status }),
   resetOrderStatus: () => set({ orderStatus: orderStatuses[0] }),
   nextOrderStatus: () =>

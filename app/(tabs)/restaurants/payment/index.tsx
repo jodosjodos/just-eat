@@ -22,7 +22,7 @@ const PaymentPage = () => {
   const [paymentMethod, setPaymentMethod] = useState("cash");
   const [cardNumber, setCardNumber] = useState<string>("");
   const [expireDate, setExpireDate] = useState<string>("");
-  const [cardHoler, setCardHolder] = useState<string>("");
+  const [cardHolder, setCardHolder] = useState<string>("");
   const [securityCode, setSecurityCode] = useState<string>("");
 
   const { totalPrice, subTotalPrice, deliveryPrice } = useLocalSearchParams();
@@ -48,10 +48,10 @@ const PaymentPage = () => {
         </View>
       ),
     });
-  }, [navigation]);
+  }, []);
   const handlePayment = () => {
     if (
-      (!cardNumber || !expireDate || !cardHoler || !securityCode) &&
+      (!cardNumber || !expireDate || !cardHolder || !securityCode) &&
       paymentMethod === "online"
     ) {
       toast.show("all fields are required", {
@@ -160,7 +160,7 @@ const PaymentPage = () => {
                 placeholder="Card holder"
                 style={styles.shadowCustom}
                 keyboardType="name-phone-pad"
-                value={cardHoler}
+                value={cardHolder}
                 onChangeText={setCardHolder}
               />
             </View>
