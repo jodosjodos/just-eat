@@ -7,18 +7,12 @@ import { Image } from "react-native";
 import { images } from "@/constants";
 
 const Rating: React.FC = () => {
-  const navigation = useNavigation();
-
-  // State to track selected stars (using a number array)
   const [rating, setRating] = useState<number[]>([]);
 
-  // Function to handle star press
   const handleStarPress = (index: number) => {
     if (rating.includes(index)) {
-      // If the star is already selected, remove it
       setRating(rating.filter((item) => item !== index));
     } else {
-      // Otherwise, add the star to the selected rating
       setRating([...rating, index]);
     }
   };
