@@ -19,13 +19,7 @@ const labels = [
   "The driver is on the way",
   "Delivered",
 ];
-const labels1 = [
-  { label: "Your order is accepted", period: ". . . . . ." },
-  { label: "Preparing your order", period: "10Min" },
-  { label: "Your order is ready", period: "5 Minutes" },
-  { label: "The driver is on the way", period: "20 minutes" },
-  { label: "Delivered", period: "0 minutes" },
-];
+
 const customStyles = {
   stepIndicatorSize: 30,
   currentStepIndicatorSize: 35,

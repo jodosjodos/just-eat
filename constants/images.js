@@ -30,6 +30,8 @@ import prepareOrder from "../assets/images/prepareOrder.png";
 import readyOrder from "../assets/images/readyOrder.png";
 import OrderDriver from "../assets/images/orderDriver.png";
 import driver from "../assets/images/driver.png";
+import map1 from "../assets/images/map1.png";
+import map2 from "../assets/images/map2.png";
 export {
   logo,
   logoX,
@@ -62,5 +64,7 @@ export {
   prepareOrder,
   readyOrder,
   OrderDriver,
-  driver
+  driver,
+  map1,
+  map2,
 };

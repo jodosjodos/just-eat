@@ -4,7 +4,13 @@ const OrderLayoutPage = () => {
   return (
     <Stack>
       <Stack.Screen
-        name="[status]"
+        name="status"
+        options={{
+        //   headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="real-time-order"
         options={{
         //   headerShown: false,
         }}

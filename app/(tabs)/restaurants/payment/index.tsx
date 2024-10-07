@@ -62,7 +62,7 @@ const PaymentPage = () => {
     toast.show(" successfully ordered", {
       type: "success",
     });
-    router.push(`/(tabs)/restaurants/order-status/${orderStatus}`)
+    router.push(`/(tabs)/restaurants/order-status/status`)
   };
   return (
     <SafeAreaView className="bg-white">
