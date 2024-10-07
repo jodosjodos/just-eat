@@ -55,7 +55,7 @@ const RealTimeOrder = () => {
     if (deliverySuccess) {
       const timeout = setTimeout(() => {
         // Navigate to the next page after 5 seconds
-        router.push('/(tabs)/restaurants/order-status/rating'); // Replace with your desired route
+        router.push("/(tabs)/restaurants/order-status/rating"); // Replace with your desired route
       }, 5000); // 5 seconds
 
       return () => clearTimeout(timeout); // Cleanup on unmount
@@ -81,7 +81,9 @@ const RealTimeOrder = () => {
           </View>
           <View className="flex flex-col px-8 space-y-2">
             {remainingTime === 0 ? (
-              <Text className="text-xl font-bold">Delivered Successfully</Text>
+              <Text className="text-xl font-kadwa text-center">
+                Delivered Successfully
+              </Text>
             ) : (
               <>
                 <View className="flex flex-row items-center space-x-5 w-full">
