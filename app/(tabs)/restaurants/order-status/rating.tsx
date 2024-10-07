@@ -43,7 +43,7 @@ const Rating: React.FC = () => {
                 ))}
               </View>
             </View>
-            <TouchableOpacity className="bg-primary  rounded-full items-center  py-2  my-6">
+            <TouchableOpacity className="bg-primary  rounded-full items-center  py-3   my-6 ">
               <Text className="text-white font-adamina text-xl ">Submit</Text>
             </TouchableOpacity>
           </View>
