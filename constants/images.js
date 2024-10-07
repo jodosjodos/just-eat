@@ -33,6 +33,7 @@ import driver from "../assets/images/driver.png";
 import map1 from "../assets/images/map1.png";
 import map2 from "../assets/images/map2.png";
 import userProfile2 from "../assets/images/userProfile2.png";
+import logoRating from "../assets/images/logoRating.png";
 export {
   logo,
   logoX,
@@ -68,5 +69,6 @@ export {
   driver,
   map1,
   map2,
-  userProfile2
+  userProfile2,
+  logoRating
 };

@@ -47,7 +47,15 @@ const Rating: React.FC = () => {
                 ))}
               </View>
             </View>
+            <TouchableOpacity className="bg-primary  rounded-full items-center  py-5 px-8 my-6">
+              <Text className="text-white font-adamina text-2xl ">Submit</Text>
+            </TouchableOpacity>
           </View>
+        </View>
+        <View>
+          <Image source={images.logoRating} />
+          <Text>Just EAT</Text>
+          <Text>Thank you for your order</Text>
         </View>
       </View>
     </SafeAreaView>
