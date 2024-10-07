@@ -6,13 +6,16 @@ const OrderLayoutPage = () => {
       <Stack.Screen
         name="status"
         options={{
-        //   headerShown: false,
         }}
       />
       <Stack.Screen
         name="real-time-order"
         options={{
-        //   headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="rating"
+        options={{
         }}
       />
     </Stack>

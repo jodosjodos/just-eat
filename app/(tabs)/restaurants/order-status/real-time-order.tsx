@@ -8,6 +8,7 @@ import Feather from "@expo/vector-icons/Feather";
 
 const RealTimeOrder = () => {
   const [remainingTime, setRemainingTime] = useState(10); // Start from 10
+  const [deliverySuccess, setDeliverySuccess] = useState(false); // Track delivery status
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -40,6 +41,7 @@ const RealTimeOrder = () => {
       setRemainingTime((prev) => {
         if (prev <= 1) {
           clearInterval(timer); // Clear interval when reaching 0
+          setDeliverySuccess(true); // Set delivery success
           return 0;
         }
         return prev - 1; // Decrease remaining time
@@ -48,6 +50,17 @@ const RealTimeOrder = () => {
 
     return () => clearInterval(timer); // Cleanup on unmount
   }, []);
+
+  useEffect(() => {
+    if (deliverySuccess) {
+      const timeout = setTimeout(() => {
+        // Navigate to the next page after 5 seconds
+        router.push('/(tabs)/restaurants/order-status/rating'); // Replace with your desired route
+      }, 5000); // 5 seconds
+
+      return () => clearTimeout(timeout); // Cleanup on unmount
+    }
+  }, [deliverySuccess]);
 
   return (
     <SafeAreaView className="bg-white">
@@ -68,9 +81,7 @@ const RealTimeOrder = () => {
           </View>
           <View className="flex flex-col px-8 space-y-2">
             {remainingTime === 0 ? (
-              <Text className="text-xl font-kadwa-bold text-center">
-                Delivered Successfully
-              </Text>
+              <Text className="text-xl font-bold">Delivered Successfully</Text>
             ) : (
               <>
                 <View className="flex flex-row items-center space-x-5 w-full">
