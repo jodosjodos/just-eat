@@ -1,4 +1,10 @@
-import { View, Text, Pressable, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  Pressable,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { router, useNavigation } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -12,6 +18,13 @@ const labels = [
   "Your order is ready",
   "The driver is on the way",
   "Delivered",
+];
+const labels1 = [
+  { label: "Your order is accepted", period: ". . . . . ." },
+  { label: "Preparing your order", period: "10Min" },
+  { label: "Your order is ready", period: "5 Minutes" },
+  { label: "The driver is on the way", period: "20 minutes" },
+  { label: "Delivered", period: "0 minutes" },
 ];
 const customStyles = {
   stepIndicatorSize: 30,
@@ -57,8 +70,6 @@ const renderStepIndicator = ({
 const OrderStatusPage = () => {
   const navigation = useNavigation();
   const [currentStep, setCurrentStep] = useState<number>(0);
-  console.log(currentStep);
-
   useEffect(() => {
     navigation.setOptions({
       headerBackVisible: false,
@@ -88,6 +99,12 @@ const OrderStatusPage = () => {
       console.log("order completed");
     }
   };
+  useEffect(() => {
+    if (currentStep === 3) {
+      router.push("/(tabs)/restaurants/order-status/real-time-order");
+    }
+  }, [currentStep]);
+
   return (
     <SafeAreaView className="bg-white">
       <View className="h-full w-full flex flex-col px-12 space-y-12">
@@ -121,6 +138,11 @@ const OrderStatusPage = () => {
           <View>
             <Image source={images.readyOrder} />
           </View>
+        )}
+        {currentStep === 0 && (
+          <TouchableOpacity className="bg-primary  rounded-full items-center  py-5 px-8 my-6">
+            <Text className="text-white font-adamina text-2xl ">Cancel</Text>
+          </TouchableOpacity>
         )}
       </View>
     </SafeAreaView>
