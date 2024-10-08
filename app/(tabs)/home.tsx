@@ -29,7 +29,7 @@ const Home = () => {
         </Pressable>
         <SearchComponent />
         {dropdownVisible && (
-          <View className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50">
+          <View className="absolute top-20  right-2 mt-2 w-48 bg-secondary rounded-lg shadow-lg py-2 z-50">
             <TouchableOpacity
               className="px-4 py-2 hover:bg-gray-200"
               onPress={() => {
@@ -37,16 +37,20 @@ const Home = () => {
                 setDropdownVisible(false); // Hide dropdown after selection
               }}
             >
-              <Text className="text-gray-800">Account Settings</Text>
+              <Text className="text-primary font-lekton-bold text-lg text-center">
+                Account Settings
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              className="px-4 py-2 hover:bg-gray-200"
+              className="px-4 py-2 hover:bg-gray-200 border-t border-primary"
               onPress={() => {
                 FIREBASE_AUTH.signOut();
                 setDropdownVisible(false);
               }}
             >
-              <Text className="text-red-500">Logout</Text>
+              <Text className="text-primary font-lekton-bold text-lg">
+                Logout
+              </Text>
             </TouchableOpacity>
           </View>
         )}

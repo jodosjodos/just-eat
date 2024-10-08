@@ -33,6 +33,7 @@ const SignIn = () => {
       return;
     }
     try {
+      setLoading(true)
       const res = await signInWithEmailAndPassword(auth, email, password);
       console.log(res);
       toast.show("successfully");
@@ -40,7 +41,7 @@ const SignIn = () => {
       console.log(e);
       
       const err = e as FirebaseError;
-      console.log(err.customData);
+      console.log(err.message);
       
       toast.show(err.message, { type: "danger" });
     } finally {

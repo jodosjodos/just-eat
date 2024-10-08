@@ -27,6 +27,7 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const [user, setUser] = useState<User | null>(null);
   const [initializing, setInitializing] = useState<boolean>(true);
+  const [isAppReady, setIsAppReady] = useState<boolean>(false); // Ensure the app is mounted and ready
   const segments = useSegments();
 
   // Load Kreon fonts along with other fonts
@@ -47,6 +48,7 @@ export default function RootLayout() {
   useEffect(() => {
     if (fontsLoaded || fontsError) {
       SplashScreen.hideAsync(); // Hide splash screen once fonts are loaded or if there's an error
+      setIsAppReady(true); // Set the app as ready when fonts are loaded
       if (fontsError) {
         console.error("Font loading error:", fontsError);
       }
@@ -55,33 +57,33 @@ export default function RootLayout() {
 
   // Firebase authentication state listener
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(FIREBASE_AUTH, (firebaseUser) => {
-      setUser(firebaseUser);
-      if (initializing) setInitializing(false); // Stop initializing once auth is determined
+    const unsubscribe = onAuthStateChanged(FIREBASE_AUTH, (user) => {
+      setUser(user);
+      if (initializing) setInitializing(false); // Set initializing to false when auth is determined
     });
     return () => unsubscribe(); // Clean up the subscription on unmount
-  }, [initializing]);
+  }, []);
 
-  // Ensure that routing only happens after initialization
+  // Ensure that routing only happens after initialization and fonts are loaded
   useEffect(() => {
-    if (initializing) return; // Ensure that no routing happens during initialization
-    
-    const inAuthGroup = segments[0] === "(auth)";
+    if (initializing || !isAppReady) return; // Ensure that no routing happens during initialization or before fonts are loaded
 
-    if (user && inAuthGroup) {
-      // If authenticated and in the auth group, navigate to tabs (home)
+    const inAuthGroup = segments[0] === "(tabs)";
+
+    if (user && !inAuthGroup) {
+      // If authenticated and not in the auth group, navigate to home
       router.replace("/(tabs)/home");
-    } else if (!user && !inAuthGroup) {
-      // If not authenticated and not in the auth group, redirect to login
+    } else if (!user && inAuthGroup) {
+      // If not authenticated and in the auth group, redirect to login
       router.replace("/(auth)/");
     }
-  }, [user, initializing, segments]);
+  }, [user, initializing, isAppReady, segments]);
 
   // Always return a consistent component structure
   return (
     <>
-      {initializing || (!fontsLoaded && !fontsError) ? (
-        // Show loading indicator if fonts are still loading or app is initializing
+      {!fontsLoaded && !fontsError ? (
+        // Show loading indicator if fonts are still loading
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
           <ActivityIndicator size="large" color="#0000ff" />
           <Text>Loading...</Text>
