@@ -1,4 +1,12 @@
-import { View, Text, TouchableOpacity, Image, TextInput, KeyboardAvoidingView } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  TextInput,
+  KeyboardAvoidingView,
+  ActivityIndicator,
+} from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
@@ -9,7 +17,10 @@ import { router } from "expo-router";
 import { useToast } from "react-native-toast-notifications";
 import Feather from "@expo/vector-icons/Feather";
 import { FirebaseError } from "firebase/app";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { FIREBASE_AUTH } from "@/firebaseConfig";
 
 const SignUp = () => {
@@ -35,8 +46,7 @@ const SignUp = () => {
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       console.log(res);
-      toast.show("successfully")
-      
+      toast.show("successfully");
     } catch (e) {
       const err = e as FirebaseError;
       toast.show(err.message, { type: "danger" });
@@ -47,7 +57,10 @@ const SignUp = () => {
   };
   return (
     <SafeAreaView className="bg-white" style={{ zIndex: 1 }}>
-      <KeyboardAvoidingView behavior="padding"  className="flex flex-col px-5  h-full">
+      <KeyboardAvoidingView
+        behavior="padding"
+        className="flex flex-col px-5  h-full"
+      >
         <View className="flex flex-col gap-y-9">
           <View className="flex flex-row items-center gap-9">
             <Image source={images.logo} className="self-start z-10" />
@@ -145,12 +158,18 @@ const SignUp = () => {
             </View>
           </View>
         </View>
-        <TouchableOpacity
-          className="bg-primary  rounded-full items-center  py-5 px-8 my-6"
-          onPress={handleSubmit}
-        >
-          <Text className="text-white font-adamina text-2xl ">SignUp Now</Text>
-        </TouchableOpacity>
+        {loading ? (
+          <ActivityIndicator size="large" />
+        ) : (
+          <TouchableOpacity
+            className="bg-primary  rounded-full items-center  py-5 px-8 my-6"
+            onPress={handleSubmit}
+          >
+            <Text className="text-white font-adamina text-2xl ">
+              SignUp Now
+            </Text>
+          </TouchableOpacity>
+        )}
         <Text className="font-kadwa text-2xl  p-3  text-center ">
           already have account
         </Text>
