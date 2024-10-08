@@ -13,5 +13,5 @@
     "expo-env.d.ts",
     "constants/images.js",
     "constants/index.js"
-  ]
+, "firebaseConfig.js"  ]
 }

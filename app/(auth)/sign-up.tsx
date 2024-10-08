@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Image, TextInput } from "react-native";
+import { View, Text, TouchableOpacity, Image, TextInput, KeyboardAvoidingView } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
@@ -8,6 +8,9 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import { router } from "expo-router";
 import { useToast } from "react-native-toast-notifications";
 import Feather from "@expo/vector-icons/Feather";
+import { FirebaseError } from "firebase/app";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { FIREBASE_AUTH } from "@/firebaseConfig";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -15,8 +18,10 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const auth = FIREBASE_AUTH;
+  const [loading, setLoading] = useState<boolean>(false);
   const toast = useToast();
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!email || !username || !password || !confirmPassword) {
       toast.show(" all fields  are required!", {
         type: "danger",
@@ -27,11 +32,22 @@ const SignUp = () => {
         type: "danger",
       });
     }
+    try {
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+      console.log(res);
+      toast.show("successfully")
+      
+    } catch (e) {
+      const err = e as FirebaseError;
+      toast.show(err.message, { type: "danger" });
+    } finally {
+      setLoading(false);
+    }
     //TODO: call api for submit
   };
   return (
     <SafeAreaView className="bg-white" style={{ zIndex: 1 }}>
-      <View className="flex flex-col px-5  h-full">
+      <KeyboardAvoidingView behavior="padding"  className="flex flex-col px-5  h-full">
         <View className="flex flex-col gap-y-9">
           <View className="flex flex-row items-center gap-9">
             <Image source={images.logo} className="self-start z-10" />
@@ -155,7 +171,7 @@ const SignUp = () => {
             <Image source={images.facebook} resizeMode="contain" />
           </TouchableOpacity>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };

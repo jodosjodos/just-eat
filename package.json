@@ -19,6 +19,7 @@
     "@expo-google-fonts/kadwa": "^0.2.3",
     "@expo-google-fonts/kreon": "^0.2.3",
     "@expo-google-fonts/lekton": "^0.2.3",
+    "@expo/cli": "^0.18.30",
     "@expo/vector-icons": "^14.0.2",
     "@react-native-vector-icons/fontawesome": "^4.7.0-alpha.25",
     "@react-navigation/native": "^6.0.2",
@@ -31,6 +32,7 @@
     "expo-status-bar": "~1.12.1",
     "expo-system-ui": "~3.0.7",
     "expo-web-browser": "~13.0.3",
+    "firebase": "^10.14.0",
     "nativewind": "^2.0.11",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -43,7 +45,8 @@
     "react-native-toast-notifications": "^3.4.0",
     "react-native-vector-icons": "^10.2.0",
     "react-native-web": "~0.19.10",
-    "zustand": "^5.0.0-rc.2"
+    "zustand": "^5.0.0-rc.2",
+    "@react-native-async-storage/async-storage": "1.23.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

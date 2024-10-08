@@ -1,4 +1,12 @@
-import { View, Text, TouchableOpacity, Image, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  TextInput,
+  ActivityIndicator,
+  KeyboardAvoidingView,
+} from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
@@ -7,26 +15,44 @@ import { styles } from "@/constants/styles";
 import Feather from "@expo/vector-icons/Feather";
 import { router } from "expo-router";
 import { useToast } from "react-native-toast-notifications";
+import { FIREBASE_AUTH } from "@/firebaseConfig";
+import { FirebaseError } from "firebase/app";
+import { signInWithEmailAndPassword } from "firebase/auth";
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState<boolean>(false);
   const toast = useToast();
   const [showPassword, setShowPassword] = useState(false);
-  const handleSubmit = () => {
+  const auth = FIREBASE_AUTH;
+  const handleSubmit = async () => {
     if (!email || !password) {
       toast.show(" all fields  are required!", {
         type: "danger",
       });
-      // return
+      return;
     }
-    console.log("all provided ");
-    router.replace("/(tabs)/home");
+    try {
+      const res = await signInWithEmailAndPassword(auth, email, password);
+      console.log(res);
+      toast.show("successfully");
+    } catch (e) {
+      console.log(e);
+      
+      const err = e as FirebaseError;
+      console.log(err.customData);
+      
+      toast.show(err.message, { type: "danger" });
+    } finally {
+      setLoading(false);
+    }
+  
 
     //TODO: call api for submit
   };
   return (
     <SafeAreaView className="bg-white ">
-      <View className="flex flex-col px-5  h-full">
+      <KeyboardAvoidingView  behavior="padding" className="flex flex-col px-5  h-full">
         <View className="flex flex-col gap-y-9">
           <View className="flex flex-row items-center gap-9">
             <Image source={images.logo} className="self-start" />
@@ -84,15 +110,19 @@ const SignIn = () => {
             </Text>
           </View>
         </View>
+        {loading ? (
+          <ActivityIndicator size="large" />
+        ) : (
+          <TouchableOpacity
+            className="bg-secondary  rounded-full items-center  py-5 px-8 w-full  flex flex-row justify-center gap-x-2  my-8"
+            onPress={handleSubmit}
+            style={styles.shadowCustom}
+          >
+            <FontAwesome name="user" size={19} color="#" />
+            <Text className="text-primary font-adamina text-2xl ">LogIn</Text>
+          </TouchableOpacity>
+        )}
 
-        <TouchableOpacity
-          className="bg-secondary  rounded-full items-center  py-5 px-8 w-full  flex flex-row justify-center gap-x-2  my-8"
-          onPress={handleSubmit}
-          style={styles.shadowCustom}
-        >
-          <FontAwesome name="user" size={19} color="#" />
-          <Text className="text-primary font-adamina text-2xl ">LogIn</Text>
-        </TouchableOpacity>
         <Text className="font-kadwa text-3xl mt-1 p-3  ">
           new user for Just EAT
         </Text>
@@ -102,7 +132,7 @@ const SignIn = () => {
         >
           <Text className="text-white font-adamina text-2xl ">SignUp Now</Text>
         </TouchableOpacity>
-      </View>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };
