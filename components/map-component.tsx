@@ -10,49 +10,45 @@ interface MapComponentProps {
 
 export const MapComponent: React.FC<MapComponentProps> = ({ location }) => {
   const [region, setRegion] = useState<Region | null>(null);
-  const [markerCoords, setMarkerCoords] = useState<{ latitude: number; longitude: number } | null>(null);
-
-  const INITIAL_REGION: Region = {
-    latitude: -1.957875,
-    longitude: 30.112735,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,
-  };
-
+  const [markerCoords, setMarkerCoords] = useState<{
+    latitude: number;
+    longitude: number;
+    latitudeDelta: number;
+    longitudeDelta: number;
+  } | null>(null);
   useEffect(() => {
     if (location?.latitude && location?.longitude) {
       const newRegion = {
         latitude: location.latitude,
         longitude: location.longitude,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
+        latitudeDelta: location.latitudeDelta,
+        longitudeDelta: location.longitudeDelta,
       };
       setRegion(newRegion);
-      setMarkerCoords({ latitude: location.latitude, longitude: location.longitude });
+      setMarkerCoords({
+        latitude: location.latitude,
+        longitude: location.longitude,
+        latitudeDelta: location.latitudeDelta,
+        longitudeDelta: location.longitudeDelta,
+      });
     }
   }, [location]);
 
   return (
-    <View style={styles.container}>
+    <View className="w-[100%] h-[40%]">
       {region ? (
-        <MapView style={styles.map} region={region}>
-          {markerCoords && <Marker coordinate={markerCoords} title={location?.address} />}
+        <MapView className="w-[100%] h-[100%]"  region={region}>
+          {markerCoords && (
+            <Marker coordinate={markerCoords} title={location?.address} />
+          )}
         </MapView>
       ) : (
-        <Text>Loading map...</Text>
+        <View className="flex flex-row items-center justify-center  h-full">
+          <Text className="font-lekton-bold text-xl text-primary">Loading map...</Text>
+        </View>
       )}
     </View>
   );
 };
 
-// Styles for the component
-const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    height: "40%",
-  },
-  map: {
-    width: "100%",
-    height: "100%",
-  },
-});
+
