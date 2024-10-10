@@ -21,16 +21,13 @@ import { CustomToast } from "@/components/Custom-Toast";
 import { onAuthStateChanged, User } from "firebase/auth";
 import { FIREBASE_AUTH } from "@/firebaseConfig";
 
-// Prevent the splash screen from auto-hiding until the fonts are loaded
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [user, setUser] = useState<User | null>(null);
   const [initializing, setInitializing] = useState<boolean>(true);
-  const [isAppReady, setIsAppReady] = useState<boolean>(false); // Ensure the app is mounted and ready
+  const [isAppReady, setIsAppReady] = useState<boolean>(false);
   const segments = useSegments();
-
-  // Load Kreon fonts along with other fonts
   const [fontsLoaded, fontsError] = useFonts({
     Kreon_300Light,
     Kreon_400Regular,
@@ -44,52 +41,45 @@ export default function RootLayout() {
     Adamina_400Regular,
   });
 
-  // Handle splash screen visibility based on font loading status
   useEffect(() => {
     if (fontsLoaded || fontsError) {
-      SplashScreen.hideAsync(); // Hide splash screen once fonts are loaded or if there's an error
-      setIsAppReady(true); // Set the app as ready when fonts are loaded
+      SplashScreen.hideAsync(); 
+      setIsAppReady(true); 
       if (fontsError) {
         console.error("Font loading error:", fontsError);
       }
     }
   }, [fontsLoaded, fontsError]);
 
-  // Firebase authentication state listener
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(FIREBASE_AUTH, (user) => {
       setUser(user);
-      if (initializing) setInitializing(false); // Set initializing to false when auth is determined
+      if (initializing) setInitializing(false);
     });
-    return () => unsubscribe(); // Clean up the subscription on unmount
+    return () => unsubscribe(); 
   }, []);
 
-  // Ensure that routing only happens after initialization and fonts are loaded
   useEffect(() => {
-    if (initializing || !isAppReady) return; // Ensure that no routing happens during initialization or before fonts are loaded
+    if (initializing || !isAppReady) return; 
 
     const inAuthGroup = segments[0] === "(tabs)";
 
     if (user && !inAuthGroup) {
-      // If authenticated and not in the auth group, navigate to home
       router.replace("/(tabs)/home");
     } else if (!user && inAuthGroup) {
-      // If not authenticated and in the auth group, redirect to login
       router.replace("/(auth)/");
     }
   }, [user, initializing, isAppReady, segments]);
-
-  // Always return a consistent component structure
   return (
     <>
       {!fontsLoaded && !fontsError ? (
-        // Show loading indicator if fonts are still loading
-        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <View className="flex flex-row justify-center items-center">
           <ActivityIndicator size="large" color="#0000ff" />
-          <Text>Loading...</Text>
+          <Text className="font-lekton-bold text-xl text-primary">
+            Loading...
+          </Text>
         </View>
       ) : (
-        // Render the app when fonts are loaded or there's an error
         <ToastProvider
           placement="top"
           successColor="green"
