@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import {  Text, View } from "react-native";
 import MapView, { Marker, Region } from "react-native-maps";
 import { LocationProp } from "@/types";
-
-// Define the props type for the MapComponent
 interface MapComponentProps {
   location: LocationProp | undefined;
 }
