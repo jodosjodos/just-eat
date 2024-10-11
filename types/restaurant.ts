@@ -10,7 +10,7 @@ export interface Restaurant {
   logo: ImageSourcePropType;
   typeOfCuisine: string;
   deliveryPrice: number;
-  location: string;
+  location: LocationProp;
   openTime: string;
   coverImage: ImageSourcePropType;
   distance: string;
@@ -27,13 +27,19 @@ export interface FoodItem {
   category: string;
 }
 
-
-export interface foodItemOrder{
-  id:number
-  name:string
-  typeOfCuisine:string
-  timeOrdered:string
-  totalPrice:string
-  totalDeliveryPrice:string
-  smallImage:images.veggie
+export interface foodItemOrder {
+  id: number;
+  name: string;
+  typeOfCuisine: string;
+  timeOrdered: string;
+  totalPrice: string;
+  totalDeliveryPrice: string;
+  smallImage: images.veggie;
+}
+export interface LocationProp {
+  latitude: number;
+  longitude: number;
+  latitudeDelta: number;
+  longitudeDelta: number;
+  address:string
 }

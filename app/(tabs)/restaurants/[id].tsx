@@ -16,6 +16,7 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import FoodDetails from "@/components/restaurant/Food-item";
 import Entypo from "@expo/vector-icons/Entypo";
+import { MapComponent } from "@/components/map-component";
 const REstaurantDetails = () => {
   const [restaurant, setRestaurant] = useState<Restaurant | undefined>(); // Handle undefined case
   const [foodItems, setFoodItems] = useState<FoodItem[]>([]);
@@ -68,7 +69,8 @@ const REstaurantDetails = () => {
   return (
     <SafeAreaView className="bg-white h-full w-full" edges={["top", "bottom"]}>
       <View className="w-full h-full flex flex-col space-y-3 relative">
-        <Image source={restaurant?.coverImage} />
+        {/* <Image source={restaurant?.coverImage} /> */}
+        <MapComponent location={restaurant?.location}/>
         <TouchableOpacity className="absolute top-0 left-2" onPress={goBack}>
           <AntDesign name="closecircleo" size={28} color="#024220" />
         </TouchableOpacity>
@@ -84,7 +86,7 @@ const REstaurantDetails = () => {
         <View className="flex flex-row space-x-2 px-5">
           <Entypo name="location" size={22} color="#273B4A" />
           <Text className="font-kadwa text-lg underline ml-6">
-            {restaurant?.location}
+            {restaurant?.location.address}
           </Text>
         </View>
 
