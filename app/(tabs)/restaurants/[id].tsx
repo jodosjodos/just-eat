@@ -67,9 +67,9 @@ const REstaurantDetails = () => {
     router.push("/(tabs)/restaurants/");
   };
   return (
-    <SafeAreaView className="bg-white h-full w-full" edges={["top", "bottom"]}>
-      <View className="w-full h-full flex flex-col space-y-3 relative">
-        <MapComponent location={restaurant?.location}/>
+    <SafeAreaView className="bg-white h-auto w-full" edges={["top", "bottom"]}>
+      <View className="w-full h-full flex flex-col  relative">
+        <MapComponent location={restaurant?.location} />
         <TouchableOpacity className="absolute top-0 left-2" onPress={goBack}>
           <AntDesign name="closecircleo" size={28} color="#024220" />
         </TouchableOpacity>
@@ -119,45 +119,42 @@ const REstaurantDetails = () => {
             </Text>
           </View>
         </View>
-        <View className="flex flex-row items-center justify-center space-x-6 border-y-8 py-3 border-secondary">
+        <View className="flex flex-row items-center justify-center space-x-6 border-y-8 py-2 border-secondary">
           <TouchableOpacity className="bg-primary  rounded-full items-center py-2 px-5">
-            <Text className="text-white font-adamina text-lg ">
-              See Similar
-            </Text>
+            <Text className="text-white font-adamina text-lg">See Similar</Text>
           </TouchableOpacity>
           <TouchableOpacity className="bg-primary  rounded-full items-center  px-5 py-2">
-            <Text className="text-white font-adamina text-lg ">
+            <Text className="text-white font-adamina text-lg">
               Most popular
             </Text>
           </TouchableOpacity>
         </View>
-
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          data={foodItems}
-          keyExtractor={(foodItem) => foodItem.id.toString()}
-          renderItem={({ item }) => <FoodDetails foodItem={item} />}
-          ListHeaderComponent={
-            <View className="flex flex-row items-center justify-around">
-              {filters.map((filter) => (
-                <TouchableOpacity
-                  key={filter}
-                  onPress={() => handleFilterClick(filter)}
-                >
-                  <Text
-                    className={`text-lg cursor-pointer ${
-                      selectedFilter === filter
-                        ? "text-primary font-kadwa-bold underline"
-                        : "text-black font-kadwa"
-                    }`}
-                  >
-                    {filter}
-                  </Text>
-                </TouchableOpacity>
-              ))}
-            </View>
-          }
-        />
+        <View className="flex flex-row items-center justify-around py-1">
+          {filters.map((filter) => (
+            <TouchableOpacity
+              key={filter}
+              onPress={() => handleFilterClick(filter)}
+            >
+              <Text
+                className={`text-lg cursor-pointer ${
+                  selectedFilter === filter
+                    ? "text-primary font-kadwa-bold underline"
+                    : "text-black font-kadwa"
+                }`}
+              >
+                {filter}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+        {/* <View className="h-auto"> */}
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            data={foodItems}
+            keyExtractor={(foodItem) => foodItem.id.toString()}
+            renderItem={({ item }) => <FoodDetails foodItem={item} />}
+          />
+        {/* </View> */}
       </View>
     </SafeAreaView>
   );
