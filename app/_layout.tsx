@@ -43,8 +43,8 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (fontsLoaded || fontsError) {
-      SplashScreen.hideAsync(); 
-      setIsAppReady(true); 
+      SplashScreen.hideAsync();
+      setIsAppReady(true);
       if (fontsError) {
         console.error("Font loading error:", fontsError);
       }
@@ -56,11 +56,11 @@ export default function RootLayout() {
       setUser(user);
       if (initializing) setInitializing(false);
     });
-    return () => unsubscribe(); 
+    return () => unsubscribe();
   }, []);
 
   useEffect(() => {
-    if (initializing || !isAppReady) return; 
+    if (initializing || !isAppReady) return;
 
     const inAuthGroup = segments[0] === "(tabs)";
 
