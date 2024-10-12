@@ -14,6 +14,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { styles } from "@/constants/styles";
 import { images } from "@/constants";
 import { useToast } from "react-native-toast-notifications";
+//TODO: implementing stripe
 const PaymentPage = () => {
   const navigation = useNavigation();
   const toast = useToast();
