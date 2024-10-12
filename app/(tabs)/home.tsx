@@ -23,7 +23,10 @@ const Home = () => {
   };
   return (
     <SafeAreaView className="bg-white">
-      <View className="flex flex-col gap-2 w-full h-full">
+      <ScrollView
+        className="flex flex-col gap-2 w-full h-full"
+        showsVerticalScrollIndicator={false}
+      >
         <Pressable onPress={toggleDropdown}>
           <UserProfile name={user.name} profile={user.profile} />
         </Pressable>
@@ -79,7 +82,7 @@ const Home = () => {
             <RestaurantOverview restaurant={restaurants[1]} />
           </View>
         </ScrollView>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };

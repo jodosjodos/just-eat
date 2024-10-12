@@ -767,34 +767,3 @@ export const restaurantFoods = [
     category: "Coffee",
   },
 ];
-
-export const reduxFoodData = [
-  {
-    id: 1,
-    name: "Greek Gyro Grill",
-    typeOfCuisine: "Greek",
-    timeOrdered: "2",
-    totalPrice: "3000",
-    totalDeliveryPrice: "500",
-    smallImage: images.sweetAndSpicySmall,
-  },
-  {
-    id: 2,
-    name: "Strawberry Mojito",
-    typeOfCuisine: "JUICE",
-    timeOrdered: "1",
-    totalPrice: "00",
-    totalDeliveryPrice: "20",
-    smallImage: images.veggie,
-  },
-  {
-    id: 3,
-    name: "Strawberry Mojito",
-    typeOfCuisine: "JUICE",
-    timeOrdered: "1",
-    totalPrice: "00",
-    totalDeliveryPrice: "20",
-    smallImage: images.veggie,
-  },
-  
-];
